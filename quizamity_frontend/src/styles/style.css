@@ -1,0 +1,130 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem !important;
+  text-align: center; /* Zentriert Text innerhalb Elements */
+  padding-bottom: 2rem;
+}
+
+header {
+  background-color: rgb(199, 255, 199);
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#header_img {
+  margin-left: 1rem;
+  height: 10rem;
+  width: 10rem;
+}
+
+/* Allgemeine Formatierung */
+ul {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  font-weight: lighter;
+}
+
+a:hover {
+  color: darkolivegreen;
+  text-decoration: underline;
+}
+
+/* Formatierung für Links in .links */
+.links ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.links li {
+  margin-right: 2rem;
+}
+
+.links li a {
+  margin-right: 2rem;
+}
+
+.links a {
+  font-size: large;
+}
+
+/* Formatierung für Links in #loginlinks */
+
+#loginlinks a {
+  font-size: small;
+}
+
+p {
+  margin: 2rem;
+}
+
+/* Flex-Container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8rem;
+}
+
+.loginform {
+  border: 0.2rem solid green;
+  padding: 3rem;
+  border-radius: 0.8rem;
+  width: 35rem;
+  margin: 2rem auto;
+  background-color: white;
+}
+
+.form-group {
+  display: flex; /* Horizontal nebeneinander */
+  align-items: center; /* Vertikale Zentrierung */
+  margin-bottom: 1.5rem; /* Abstand zwischen den Formularfeldern */
+}
+
+/* Abstand zwischen Label und Eingabefeld */
+label {
+  margin-right: 1rem;
+}
+
+.loginbutton {
+  text-align: center;
+}
+
+.button {
+  background-color: green;
+  color: white;
+  border: none;
+  text-align: center;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  background-color: rgb(199, 255, 199);
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  flex-direction: column; /* Links und Copyright untereinander in Spalten/column */
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center; /* Vertikal zentrieren */
+}
+
+small {
+  text-align: center;
+  align-items: flex-end;
+  font-weight: lighter;
+  margin-left: 2rem;
+}
