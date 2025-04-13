@@ -1,12 +1,6 @@
 body {
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-}
-
-h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 3rem !important;
-  text-align: center; /* Zentriert Text innerhalb Elements */
-  padding-bottom: 2rem;
 }
 
 header {
@@ -66,27 +60,41 @@ a:hover {
   font-size: small;
 }
 
-p {
-  margin: 2rem;
+main {
+  margin: 0;
+  padding: 2rem;
 }
 
-/* Flex-Container */
-.form-container {
+h1 {
+  font-family: "Quicksand", sans-serif;
+  font-size: 3rem !important;
+  text-align: center; /* Zentriert Text innerhalb Elements */
+}
+
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 8rem;
+  justify-content: space-between;
 }
 
+/*Formular-Container */
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/*Formular-Stil */
 .loginform {
   border: 0.2rem solid green;
   padding: 3rem;
   border-radius: 0.8rem;
   width: 35rem;
-  margin: 2rem auto;
+  margin: 2rem 0;
   background-color: white;
 }
-
+/*Formularfelder*/
 .form-group {
   display: flex; /* Horizontal nebeneinander */
   align-items: center; /* Vertikale Zentrierung */
@@ -106,9 +114,21 @@ label {
   background-color: green;
   color: white;
   border: none;
-  text-align: center;
   border-radius: 2rem;
   padding: 0.5rem 1rem;
+}
+
+/*Bild-Container*/
+.image-section {
+  flex: 1;
+  display: flex;
+  padding-left: 0.5rem;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 footer {
@@ -127,4 +147,21 @@ small {
   align-items: flex-end;
   font-weight: lighter;
   margin-left: 2rem;
+}
+
+@media (max-width: 1194px) {
+  .image-section {
+    display: none;
+  }
+
+  .form-section {
+    flex: 1 1 100%;
+    padding: 2rem;
+    align-items: center;
+  }
+
+  .loginform {
+    width: 100%;
+    max-width: 30rem;
+  }
 }
