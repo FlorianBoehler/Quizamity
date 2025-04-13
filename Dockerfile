@@ -17,7 +17,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jdk
 
 # Download Payara Micro server
-RUN curl -L -o /payara-micro.jar https://repo1.maven.org/maven2/fish/payara/extras/payara-micro/payara-micro-6.2024.9.jar
+RUN curl -L -o /payara-micro.jar https://repo1.maven.org/maven2/fish/payara/extras/payara-micro/6.2024.2/payara-micro-6.2024.2.jar
 
 # Set working directory
 WORKDIR /app
