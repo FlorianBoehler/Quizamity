@@ -27,4 +27,11 @@ public class UserResource {
                     .build();
         }
     }
+    @GET
+    @Path("/test")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return "Hello from REST!";
+    }
+
 }
