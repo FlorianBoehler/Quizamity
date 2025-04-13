@@ -26,4 +26,4 @@ WORKDIR /app
 COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
 
 # Start the application with Payara Micro on port 8080
-CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", "--port", "8080"]
+CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", "--port", "8080", "--nohazelcast"]
