@@ -8,6 +8,7 @@ WORKDIR /app
 # Copy the Maven project files
 COPY pom.xml .
 COPY src ./src
+COPY pgds.properties /app/pgds.properties
 
 # Build the project and skip tests
 RUN mvn clean package -DskipTests
@@ -26,4 +27,7 @@ WORKDIR /app
 COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
 
 # Start the application with Payara Micro on port 8080
-CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", "--port", "8080", "--nohazelcast"]
+CMD ["java", "-jar", "/payara-micro.jar",
+    "--deploy", "/app/quizamity-1.0-SNAPSHOT.war",
+    "--port", "8080", "--nohazelcast",
+    "--datasourceconfiguration", "pgds.properties"]
