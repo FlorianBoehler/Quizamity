@@ -9,17 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.render.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/RestApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/api/CORSFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/api/HealthCheckResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/quizamity_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence-prod.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence-prod.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="adapt for render.com">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,8 +295,17 @@
       <workItem from="1743848570939" duration="490000" />
       <workItem from="1743849382991" duration="2531000" />
       <workItem from="1744289832310" duration="362000" />
-      <workItem from="1744519974285" duration="2512000" />
+      <workItem from="1744519974285" duration="3301000" />
     </task>
+    <task id="LOCAL-00001" summary="adapt for render.com">
+      <option name="closed" value="true" />
+      <created>1744522500520</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744522500520</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,5 +321,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adapt for render.com" />
+    <option name="LAST_COMMIT_MESSAGE" value="adapt for render.com" />
   </component>
 </project>
