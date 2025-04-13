@@ -9,7 +9,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/quizamity"/>
             <property name="jakarta.persistence.jdbc.user" value="r4t_user"/>
-            <property name="jakarta.persistence.jdbc.password" value="2310"/>
+            <property name="jakarta.persistence.jdbc.password" value="d19DbQnb0AYQsSiAn9yki5PDWN972Wk7"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

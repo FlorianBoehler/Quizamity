@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="" />
+    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.render.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/RestApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/api/CORSFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/quizamity/api/HealthCheckResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/quizamity_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence-prod.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence-prod.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +33,26 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;FlorianBoehler&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FlorianBoehler/Quizamity.git&quot;,
+    &quot;accountId&quot;: &quot;d4337499-d15e-459c-8e91-bff75e1049e1&quot;
+  }
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -33,6 +64,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2vIUQG2tFeHnyHHvvHkpLGA1O7w" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,6 +77,8 @@
     "JBoss/WildFly Server..executor": "Run",
     "JBoss/WildFly Server.JBoss/WildFly 33.0.0.Final.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/florian/dev/Java/quizamity/target/quizamity-1.0-SNAPSHOT/WEB-INF",
     "node.js.detected.package.eslint": "true",
@@ -68,9 +104,10 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
       <recent name="$PROJECT_DIR$/src/main/java/com/quizamity/test" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -240,6 +277,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.UserTest" />
+        <item itemvalue="Application.UserTest" />
+        <item itemvalue="Application.UserTest" />
+        <item itemvalue="Application.UserTest" />
+        <item itemvalue="Application.UserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -261,11 +302,24 @@
       <updated>1743832063490</updated>
       <workItem from="1743832064584" duration="10011000" />
       <workItem from="1743848570939" duration="490000" />
-      <workItem from="1743849382991" duration="1827000" />
+      <workItem from="1743849382991" duration="2531000" />
+      <workItem from="1744289832310" duration="362000" />
+      <workItem from="1744519974285" duration="2512000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
