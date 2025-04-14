@@ -20,6 +20,11 @@ header {
   width: 10rem;
 }
 
+#searchInput {
+  background-color: transparent;
+  border: 0.1rem solid darkolivegreen;
+}
+
 /* Allgemeine Formatierung */
 ul {
   list-style: none;
@@ -87,7 +92,7 @@ h1 {
 
 /*Formular-Stil */
 .loginform {
-  border: 0.2rem solid green;
+  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
   padding: 3rem;
   border-radius: 0.8rem;
   width: 35rem;
@@ -130,6 +135,11 @@ label {
   height: 100%;
   object-fit: cover;
 }
+
+/* .form-check-input {
+  background-color: green;
+  border-color: green;
+} */
 
 footer {
   margin-top: 2rem;
