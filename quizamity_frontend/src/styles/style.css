@@ -90,6 +90,12 @@ h1 {
   align-items: flex-start;
 }
 
+.question-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*Formular-Stil */
 .loginform {
   border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
@@ -99,8 +105,19 @@ h1 {
   margin: 2rem 0;
   background-color: white;
 }
+
+.questionform {
+  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
+  padding: 4rem;
+  border-radius: 0.8rem;
+  width: 40rem;
+  margin: 2rem 0;
+  background-color: white;
+}
+
 /*Formularfelder*/
-.form-group {
+.form-group,
+.form-check {
   display: flex; /* Horizontal nebeneinander */
   align-items: center; /* Vertikale Zentrierung */
   margin-bottom: 1.5rem; /* Abstand zwischen den Formularfeldern */
@@ -111,8 +128,10 @@ label {
   margin-right: 1rem;
 }
 
-.loginbutton {
+.loginbutton,
+.nextbutton {
   text-align: center;
+  margin-top: 2rem;
 }
 
 .button {
@@ -123,6 +142,14 @@ label {
   padding: 0.5rem 1rem;
 }
 
+#exitbutton {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.3rem;
+}
+
 /*Bild-Container*/
 .image-section {
   flex: 1;
@@ -131,8 +158,14 @@ label {
 }
 
 .image-section img {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+#result {
+  width: 20rem;
+  height: auto;
   object-fit: cover;
 }
 
@@ -154,13 +187,14 @@ footer {
 
 small {
   text-align: center;
-  align-items: flex-end;
+  align-items: center;
   font-weight: lighter;
-  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 @media (max-width: 1194px) {
-  .image-section {
+  .image-section,
+  #login-bildquelle {
     display: none;
   }
 
