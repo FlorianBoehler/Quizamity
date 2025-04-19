@@ -24,4 +24,4 @@ COPY postboot.asadmin .
 EXPOSE 8080
 
 # Start Payara Micro with JNDI data source config
-CMD ["java", "-jar", "payara-micro.jar", "--deploy", "quizamity-1.0-SNAPSHOT.war", "--postbootcommandfile", "postboot.asadmin"]
+CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/quizamity-1.0-SNAPSHOT.war", "--postbootcommandfile", "/postboot.asadmin"]
