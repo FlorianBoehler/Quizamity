@@ -1,0 +1,52 @@
+Index: src/main/java/com/quizamity/api/UserResource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.quizamity.api;\n\nimport jakarta.ws.rs.GET;\nimport jakarta.ws.rs.Path;\nimport jakarta.ws.rs.Produces;\nimport jakarta.ws.rs.core.MediaType;\n\n@Path(\"/users\")\npublic class UserResource {\n\n    @GET\n    @Path(\"/test\")\n    @Produces(MediaType.TEXT_PLAIN)\n    public String hello() {\n        return \"Hello from REST!\";\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/quizamity/api/UserResource.java b/src/main/java/com/quizamity/api/UserResource.java
+--- a/src/main/java/com/quizamity/api/UserResource.java	(revision 94d472e54ab0e82119f3f84701874cd0b09a33f6)
++++ b/src/main/java/com/quizamity/api/UserResource.java	(date 1745044975143)
+@@ -1,17 +1,37 @@
+ package com.quizamity.api;
+ 
+-import jakarta.ws.rs.GET;
+-import jakarta.ws.rs.Path;
+-import jakarta.ws.rs.Produces;
++import com.quizamity.dto.UserCreateDTO;
++import com.quizamity.dto.UserResponseDTO;
++import com.quizamity.service.UserService;
++import jakarta.inject.Inject;
++import jakarta.ws.rs.*;
+ import jakarta.ws.rs.core.MediaType;
++import jakarta.ws.rs.core.Response;
+ 
+ @Path("/users")
++@Produces(MediaType.APPLICATION_JSON)
++@Consumes(MediaType.APPLICATION_JSON)
+ public class UserResource {
+ 
++    @Inject
++    private UserService userService;
++
++    @POST
++    public Response createUser(UserCreateDTO userDTO) {
++        try {
++            UserResponseDTO createdUser = userService.createUser(userDTO);
++            return Response.status(Response.Status.CREATED).entity(createdUser).build();
++        } catch (Exception e) {
++            return Response.status(Response.Status.BAD_REQUEST)
++                    .entity("{\"error\": \"" + e.getMessage() + "\"}")
++                    .build();
++        }
++    }
+     @GET
+     @Path("/test")
+     @Produces(MediaType.TEXT_PLAIN)
+     public String hello() {
+         return "Hello from REST!";
+     }
++
+ }
+\ No newline at end of file

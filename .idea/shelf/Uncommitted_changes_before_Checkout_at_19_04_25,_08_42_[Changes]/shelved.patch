@@ -1,0 +1,145 @@
+Index: Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># === BUILD STAGE ===\nFROM maven:3.9.6-eclipse-temurin-21 AS build\n\nWORKDIR /app\n\n# Copy Maven project\nCOPY pom.xml .\nCOPY src ./src\n\n# Build WAR without tests\nRUN mvn clean package -DskipTests\n\n# === RUNTIME STAGE ===\nFROM eclipse-temurin:21-jdk\n\nWORKDIR /app\n\n# Download Payara Micro\nRUN curl -L -o /payara-micro.jar https://repo1.maven.org/maven2/fish/payara/extras/payara-micro/6.2024.2/payara-micro-6.2024.2.jar\n\n# Download PostgreSQL JDBC driver\nRUN curl -L -o /postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.7.3.jar\n\n# Copy built WAR\nCOPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war ./quizamity.war\n\n# Copy startup scripts\nCOPY create-datasource.asadmin ./create-datasource.asadmin\nCOPY entrypoint.sh ./entrypoint.sh\n\n# Make entrypoint executable\nRUN chmod +x ./entrypoint.sh\n\n# Use custom entrypoint script\nENTRYPOINT [\"/app/entrypoint.sh\"]\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dockerfile b/Dockerfile
+--- a/Dockerfile	(revision 1c802bc5a92afdb7c4e8da9c79c0aa34fade1a9c)
++++ b/Dockerfile	(date 1744548640415)
+@@ -1,35 +1,29 @@
+ # === BUILD STAGE ===
++# Use Maven with JDK 21 to build the project
+ FROM maven:3.9.6-eclipse-temurin-21 AS build
+ 
++# Set working directory inside the container
+ WORKDIR /app
+ 
+-# Copy Maven project
++# Copy the Maven project files
+ COPY pom.xml .
+ COPY src ./src
+ 
+-# Build WAR without tests
++# Build the project and skip tests
+ RUN mvn clean package -DskipTests
+ 
+ # === RUNTIME STAGE ===
++# Use a lightweight JDK 21 image for running the app
+ FROM eclipse-temurin:21-jdk
+ 
+-WORKDIR /app
+-
+-# Download Payara Micro
++# Download Payara Micro server
+ RUN curl -L -o /payara-micro.jar https://repo1.maven.org/maven2/fish/payara/extras/payara-micro/6.2024.2/payara-micro-6.2024.2.jar
+ 
+-# Download PostgreSQL JDBC driver
+-RUN curl -L -o /postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.7.3.jar
+-
+-# Copy built WAR
+-COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war ./quizamity.war
++# Set working directory
++WORKDIR /app
+ 
+-# Copy startup scripts
+-COPY create-datasource.asadmin ./create-datasource.asadmin
+-COPY entrypoint.sh ./entrypoint.sh
++# Copy the generated WAR file from the build stage
++COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
+ 
+-# Make entrypoint executable
+-RUN chmod +x ./entrypoint.sh
+-
+-# Use custom entrypoint script
+-ENTRYPOINT ["/app/entrypoint.sh"]
++# Start the application with Payara Micro on port 8080
++CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", "--port", "8080", "--nohazelcast"]
+Index: src/main/java/com/quizamity/api/UserResource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.quizamity.api;\n\nimport com.quizamity.dto.UserCreateDTO;\nimport com.quizamity.dto.UserResponseDTO;\nimport com.quizamity.service.UserService;\nimport jakarta.inject.Inject;\nimport jakarta.ws.rs.*;\nimport jakarta.ws.rs.core.MediaType;\nimport jakarta.ws.rs.core.Response;\n\n@Path(\"/users\")\n@Produces(MediaType.APPLICATION_JSON)\n@Consumes(MediaType.APPLICATION_JSON)\npublic class UserResource {\n\n    @Inject\n    private UserService userService;\n\n    @POST\n    public Response createUser(UserCreateDTO userDTO) {\n        try {\n            UserResponseDTO createdUser = userService.createUser(userDTO);\n            return Response.status(Response.Status.CREATED).entity(createdUser).build();\n        } catch (Exception e) {\n            return Response.status(Response.Status.BAD_REQUEST)\n                    .entity(\"{\\\"error\\\": \\\"\" + e.getMessage() + \"\\\"}\")\n                    .build();\n        }\n    }\n    @GET\n    @Path(\"/test\")\n    @Produces(MediaType.TEXT_PLAIN)\n    public String hello() {\n        return \"Hello from REST!\";\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/quizamity/api/UserResource.java b/src/main/java/com/quizamity/api/UserResource.java
+--- a/src/main/java/com/quizamity/api/UserResource.java	(revision 1c802bc5a92afdb7c4e8da9c79c0aa34fade1a9c)
++++ b/src/main/java/com/quizamity/api/UserResource.java	(date 1744548537371)
+@@ -1,37 +1,18 @@
+ package com.quizamity.api;
+ 
+-import com.quizamity.dto.UserCreateDTO;
+-import com.quizamity.dto.UserResponseDTO;
+-import com.quizamity.service.UserService;
+-import jakarta.inject.Inject;
+-import jakarta.ws.rs.*;
++import jakarta.ws.rs.GET;
++import jakarta.ws.rs.Path;
++import jakarta.ws.rs.Produces;
+ import jakarta.ws.rs.core.MediaType;
+-import jakarta.ws.rs.core.Response;
+ 
+ @Path("/users")
+-@Produces(MediaType.APPLICATION_JSON)
+-@Consumes(MediaType.APPLICATION_JSON)
+ public class UserResource {
+ 
+-    @Inject
+-    private UserService userService;
+-
+-    @POST
+-    public Response createUser(UserCreateDTO userDTO) {
+-        try {
+-            UserResponseDTO createdUser = userService.createUser(userDTO);
+-            return Response.status(Response.Status.CREATED).entity(createdUser).build();
+-        } catch (Exception e) {
+-            return Response.status(Response.Status.BAD_REQUEST)
+-                    .entity("{\"error\": \"" + e.getMessage() + "\"}")
+-                    .build();
+-        }
+-    }
+     @GET
+     @Path("/test")
+     @Produces(MediaType.TEXT_PLAIN)
++
+     public String hello() {
+         return "Hello from REST!";
+     }
+-
+ }
+\ No newline at end of file
+Index: entrypoint.sh
+===================================================================
+diff --git a/entrypoint.sh b/entrypoint.sh
+deleted file mode 100644
+--- a/entrypoint.sh	(revision 1c802bc5a92afdb7c4e8da9c79c0aa34fade1a9c)
++++ /dev/null	(revision 1c802bc5a92afdb7c4e8da9c79c0aa34fade1a9c)
+@@ -1,27 +0,0 @@
+-#!/bin/sh
+-
+-# Replace environment variables in the datasource creation script
+-envsubst < /app/create-datasource.asadmin > /app/bootcmd.asadmin
+-
+-# Start Payara Micro WITHOUT deploying the app yet, but WITH the datasource config
+-java -jar /payara-micro.jar \
+-     --addlibs /postgresql.jar \
+-     --postbootcommandfile /app/bootcmd.asadmin \
+-     --port 8080 \
+-     --nohazelcast &
+-
+-# Save Payara process ID
+-PID=$!
+-
+-# Wait for Payara Micro to fully start up
+-echo "Waiting for Payara Micro to start..."
+-sleep 10
+-
+-# Deploy the WAR file via the Admin REST API after datasource is ready
+-echo "Deploying application..."
+-curl -X POST -H "Content-Type: application/octet-stream" \
+-     --data-binary @/app/quizamity.war \
+-     http://localhost:8080/__admin/deploy
+-
+-# Wait for the Payara process so container doesn't exit
+-wait $PID
