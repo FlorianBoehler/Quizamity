@@ -5,13 +5,16 @@
              version="3.0">
     <persistence-unit name="myPU" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <jta-data-source>jdbc/QuizamityDS</jta-data-source>
-
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
+            
+            <!-- Direct JDBC connection properties -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}"/>
+            <property name="jakarta.persistence.jdbc.user" value="${DB_USER}"/>
+            <property name="jakarta.persistence.jdbc.password" value="${DB_PASSWORD}"/>
         </properties>
     </persistence-unit>
 </persistence>

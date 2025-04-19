@@ -26,4 +26,5 @@ CMD ["java", "-jar", "/payara-micro.jar", \
  "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", \
  "--port", "8080", \
   "--postbootcommandfile", "/app/postboot.asadmin", \
+   "--debug", \
   "--nohazelcast"]
