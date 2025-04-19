@@ -22,4 +22,8 @@ COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
 COPY postboot.asadmin .
 
 # Start the application with Payara Micro with JNDI data source config on port 8080
-CMD ["java", "-jar", "/payara-micro.jar", "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", "--port", "8080", "--postbootcommandfile", "/postboot.asadmin", "--nohazelcast"]
+CMD ["java", "-jar", "/payara-micro.jar", \
+ "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", \
+ "--port", "8080", \
+  "--postbootcommandfile", "/app/postboot.asadmin", \
+  "--nohazelcast"]
