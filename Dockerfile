@@ -18,13 +18,10 @@ WORKDIR /app
 
 # Copy WAR from build stage
 COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
+COPY postboot.asadmin .
 
 # Expose HTTP port
 EXPOSE 8080
 
 # Start Payara Micro with JNDI data source config
-CMD ["java", "-jar", "/payara-micro.jar", \
-     "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", \
-     "--port", "8080", \
-     "--nohazelcast", \
-     "--addJndiResource", "jdbc/QuizamityDS|javax.sql.DataSource|org.postgresql.ds.PGSimpleDataSource|user=${DB_USER};password=${DB_PASSWORD};DatabaseName=${DB_NAME};ServerName=${DB_HOST};PortNumber=${DB_PORT}"]
+CMD ["java", "-jar", "payara-micro.jar", "--deploy", "quizamity-1.0-SNAPSHOT.war", "--postbootcommandfile", "postboot.asadmin"]
