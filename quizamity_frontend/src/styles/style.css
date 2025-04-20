@@ -150,7 +150,35 @@ label {
   padding: 0.3rem 0.3rem;
 }
 
-/*Bild-Container*/
+#singleplayer-button,
+#multiplayer-button {
+  text-align: center;
+}
+
+#singleplayer-button {
+  background-color: rgb(241, 178, 60);
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+}
+
+#multiplayer-button {
+  background-color: lightskyblue;
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+}
+
+@media (min-width: 992px) {
+  #carouselExampleCaptions {
+    max-width: 80rem;
+    margin: 1rem auto;
+  }
+}
+
+/*Bild-Container Result.html*/
 .image-section {
   flex: 1;
   display: flex;
