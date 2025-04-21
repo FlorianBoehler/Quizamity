@@ -1,6 +1,7 @@
 package com.quizamity.test;
 
 import com.quizamity.model.User;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.GET;
@@ -12,6 +13,7 @@ import java.util.List;
 
 
 @Path("/test")
+@RequestScoped
 public class TestEndpoint {
 
     @PersistenceContext(unitName = "myPU")
