@@ -1,2 +1,2 @@
-create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGSimpleDataSource --restype=javax.sql.DataSource --property user=${DB_USER}:password=${DB_PASSWORD}:DatabaseName=${DB_NAME}:ServerName=${DB_HOST}:PortNumber=5432 QuizamityPool
+create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGSimpleDataSource --restype=javax.sql.DataSource --property user=${DB_USER} --property password=${DB_PASSWORD} --property DatabaseName=${DB_NAME} --property ServerName=${DB_HOST} --property PortNumber=5432 QuizamityPool
 create-jdbc-resource --connectionpoolid=QuizamityPool jdbc/QuizamityDS
