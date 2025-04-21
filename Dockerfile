@@ -32,5 +32,4 @@ CMD ["java", \
     "--deploy", "/app/quizamity-1.0-SNAPSHOT.war", \
     "--port", "8080", \
     "--postbootcommandfile", "/app/postboot.asadmin", \
-    "--nohazelcast"
-    ]
+    "--nohazelcast"]
