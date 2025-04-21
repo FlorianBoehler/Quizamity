@@ -7,8 +7,9 @@
         <jta-data-source>jdbc/QuizamityDS</jta-data-source>
 
         <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
