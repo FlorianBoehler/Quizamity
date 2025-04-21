@@ -25,3 +25,4 @@ public class TestEndpoint {
         return em.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 }
+
