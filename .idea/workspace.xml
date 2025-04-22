@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="Update Dockerfile" />
+    <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="Update Dockerfile">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +69,7 @@
     &quot;JBoss/WildFly Server.JBoss/WildFly 33.0.0.Final.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;be__sql&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;frontend&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/florian/dev/Java/quizamity/target/quizamity-1.0-SNAPSHOT/WEB-INF&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -93,6 +95,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
       <recent name="$PROJECT_DIR$/src/main/java/com/quizamity/test" />
       <recent name="$PROJECT_DIR$" />
@@ -291,6 +294,9 @@
       <workItem from="1743849382991" duration="1827000" />
       <workItem from="1745045697811" duration="441000" />
       <workItem from="1745092282295" duration="1689000" />
+      <workItem from="1745340429395" duration="1241000" />
+      <workItem from="1745344090078" duration="15000" />
+      <workItem from="1745344109498" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="Update Dockerfile">
       <option name="closed" value="true" />
@@ -356,7 +362,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745175685930</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745340783715</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745340783715</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745341022327</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745341022327</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745341133104</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1745341133104</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,6 +417,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Dockerfile" />
+    <MESSAGE value="Merge Backend and Frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge Backend and Frontend" />
   </component>
 </project>

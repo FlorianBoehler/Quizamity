@@ -3,8 +3,8 @@ FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-COPY pom.xml .
-COPY src ./src
+COPY ./backend/pom.xml .
+COPY ./backend/src ./src
 
 RUN mvn clean package -DskipTests
 
@@ -19,7 +19,7 @@ WORKDIR /app
 
 # Copy WAR from build stage
 COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
-COPY postboot.asadmin .
+COPY ./backend/postboot.asadmin .
 
 # Start the application with Payara Micro with JNDI data source config on port 8080
 CMD ["/bin/sh", "-c", "java \
