@@ -10,58 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c61c0a16-2292-4b1b-86ed-1ff693b082f3" name="Changes" comment="Merge Backend and Frontend">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/META-INF/persistence-prod.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/META-INF/persistence-prod.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/api/UserResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/api/UserResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/config/RestApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/config/RestApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/test/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/classes/com/quizamity/test/UserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/angus-activation-2.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/angus-activation-2.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/antlr4-runtime-4.10.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/antlr4-runtime-4.10.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/btf-1.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/btf-1.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/byte-buddy-1.12.18.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/byte-buddy-1.12.18.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/checker-qual-3.42.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/checker-qual-3.42.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/classmate-1.5.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/hibernate-commons-annotations-6.0.6.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/hibernate-commons-annotations-6.0.6.Final.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/hibernate-core-6.2.5.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/hibernate-core-6.2.5.Final.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/istack-commons-runtime-4.1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/istack-commons-runtime-4.1.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-annotations-2.17.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-annotations-2.17.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-core-2.17.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-core-2.17.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-coreutils-2.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-coreutils-2.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-databind-2.17.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-databind-2.17.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-jakarta-rs-base-2.14.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-jakarta-rs-base-2.14.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-jakarta-rs-json-provider-2.14.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-jakarta-rs-json-provider-2.14.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-module-jakarta-xmlbind-annotations-2.14.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jackson-module-jakarta-xmlbind-annotations-2.14.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.activation-api-2.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.activation-api-2.1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.persistence-api-3.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.persistence-api-3.1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.transaction-api-2.0.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.transaction-api-2.0.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.xml.bind-api-4.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jakarta.xml.bind-api-4.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jandex-3.0.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jandex-3.0.5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jaxb-core-4.0.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jaxb-core-4.0.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jaxb-runtime-4.0.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jaxb-runtime-4.0.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jbcrypt-0.4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jbcrypt-0.4.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jboss-logging-3.5.0.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/jboss-logging-3.5.0.Final.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/json-patch-1.13.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/json-patch-1.13.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/msg-simple-1.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/msg-simple-1.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/postgresql-42.7.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/postgresql-42.7.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/resteasy-jackson2-provider-6.2.5.Final.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/resteasy-jackson2-provider-6.2.5.Final.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/quizamity_war_exploded/WEB-INF/lib/txw2-4.0.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/out/artifacts/quizamity_war_exploded/WEB-INF/lib/txw2-4.0.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postboot.asadmin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/postboot.asadmin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/RestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/RestApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/api/CORSFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/api/CORSFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/api/HealthCheckResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/api/HealthCheckResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/api/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/api/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quizamity/test/TestEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/quizamity/test/TestEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,7 +295,7 @@
       <workItem from="1743849382991" duration="1827000" />
       <workItem from="1745045697811" duration="441000" />
       <workItem from="1745092282295" duration="1689000" />
-      <workItem from="1745340429395" duration="347000" />
+      <workItem from="1745340429395" duration="1241000" />
     </task>
     <task id="LOCAL-00001" summary="Update Dockerfile">
       <option name="closed" value="true" />
@@ -411,7 +361,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745175685930</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745340783715</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745340783715</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745341022327</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745341022327</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Merge Backend and Frontend">
+      <option name="closed" value="true" />
+      <created>1745341133104</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1745341133104</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

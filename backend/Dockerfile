@@ -19,7 +19,7 @@ WORKDIR /app
 
 # Copy WAR from build stage
 COPY --from=build /app/target/quizamity-1.0-SNAPSHOT.war .
-COPY postboot.asadmin .
+COPY ./backend/postboot.asadmin .
 
 # Start the application with Payara Micro with JNDI data source config on port 8080
 CMD ["/bin/sh", "-c", "java \
