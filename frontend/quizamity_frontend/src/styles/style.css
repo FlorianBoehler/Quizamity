@@ -1,3 +1,4 @@
+/***Allgemeine Formatierungen***/
 body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
@@ -22,10 +23,9 @@ header {
 
 #searchInput {
   background-color: transparent;
-  border: 0.1rem solid darkolivegreen;
+  border: 0.1rem solid green;
 }
 
-/* Allgemeine Formatierung */
 ul {
   list-style: none;
 }
@@ -37,7 +37,7 @@ li a {
 }
 
 a:hover {
-  color: darkolivegreen;
+  color: green;
   text-decoration: underline;
 }
 
@@ -59,15 +59,9 @@ a:hover {
   font-size: large;
 }
 
-/* Formatierung für Links in #loginlinks */
-
-#loginlinks a {
-  font-size: small;
-}
-
 main {
   margin: 0;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -81,36 +75,36 @@ h1 {
   justify-content: space-between;
 }
 
-/*Formular-Container */
-.form-section {
-  flex: 1;
+footer {
+  margin-top: 2rem;
+  background-color: rgb(199, 255, 199);
+  width: 100%;
+  height: 10rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column; /* Links und Copyright untereinander in Spalten/column */
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center; /* Vertikal zentrieren */
 }
 
-.question-section {
-  display: flex;
-  justify-content: center;
+small {
+  text-align: center;
   align-items: center;
+  font-weight: lighter;
+  margin-left: 1rem;
 }
 
+/***Loginformular index.html***/
+
+/* Formatierung für Links in #loginlinks */
+#loginlinks a {
+  font-size: small;
+}
 /*Formular-Stil */
 .loginform {
   border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
   padding: 3rem;
   border-radius: 0.8rem;
   width: 35rem;
-  margin: 2rem 0;
-  background-color: white;
-}
-
-.questionform {
-  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
-  padding: 4rem;
-  border-radius: 0.8rem;
-  width: 40rem;
   margin: 2rem 0;
   background-color: white;
 }
@@ -142,14 +136,32 @@ label {
   padding: 0.5rem 1rem;
 }
 
-#exitbutton {
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.3rem;
+/***Frageformular quiz.html***/
+.questionform {
+  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
+  padding: 4rem;
+  border-radius: 0.8rem;
+  width: 40rem;
+  margin: 2rem 0;
+  background-color: white;
 }
 
+/*Formular-Container */
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.question-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***Carousel dashboard.html***/
 #singleplayer-button,
 #multiplayer-button {
   text-align: center;
@@ -171,14 +183,7 @@ label {
   padding: 1rem 2rem;
 }
 
-@media (min-width: 992px) {
-  #carouselExampleCaptions {
-    max-width: 80rem;
-    margin: 1rem auto;
-  }
-}
-
-/*Bild-Container Result.html*/
+/***Bild-Container result.html***/
 .image-section {
   flex: 1;
   display: flex;
@@ -197,30 +202,19 @@ label {
   object-fit: cover;
 }
 
-/* .form-check-input {
-  background-color: green;
-  border-color: green;
-} */
-
-footer {
-  margin-top: 2rem;
-  background-color: rgb(199, 255, 199);
-  width: 100%;
-  height: 8rem;
-  display: flex;
-  flex-direction: column; /* Links und Copyright untereinander in Spalten/column */
-  justify-content: center; /* Horizontal zentrieren */
-  align-items: center; /* Vertikal zentrieren */
+#exitbutton {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.3rem;
 }
 
-small {
-  text-align: center;
-  align-items: center;
-  font-weight: lighter;
-  margin-right: 2rem;
-}
+/**************Media Queries**************/
 
+/*alles unter Desktopgröße */
 @media (max-width: 1194px) {
+  /*Loginseite ohne Bild*/
   .image-section,
   #login-bildquelle {
     display: none;
@@ -235,5 +229,53 @@ small {
   .loginform {
     width: 100%;
     max-width: 30rem;
+  }
+}
+
+/*für Desktop Carousel Dashboardseite nicht ganze Seite ausfüllen*/
+@media (min-width: 992px) {
+  #carouselExampleCaptions {
+    max-width: 80rem;
+    margin: 1rem auto;
+  }
+}
+
+/*Handy Header und Footer*/
+@media (max-width: 480px) {
+  #header_img {
+    margin-left: 1rem;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  #searchInput {
+    display: none;
+  }
+
+  /* Formatierung für Links in .links */
+  .links a {
+    font-size: small;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+    text-align: center;
+  }
+
+  .links li {
+    margin-right: 1rem;
+  }
+
+  .links li a {
+    margin-right: 1rem;
+  }
+
+  footer {
+    margin-top: 1rem;
+    height: 5rem;
+  }
+
+  .copyright {
+    font-size: x-small;
   }
 }
