@@ -136,6 +136,11 @@ label {
   padding: 0.5rem 1rem;
 }
 
+.error {
+  font-size: small;
+  color: red;
+}
+
 /***Frageformular quiz.html***/
 .questionform {
   border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
@@ -184,6 +189,7 @@ label {
 }
 
 /***Bild-Container result.html***/
+
 .image-section {
   flex: 1;
   display: flex;
@@ -277,5 +283,38 @@ label {
 
   .copyright {
     font-size: x-small;
+  }
+}
+/*Handy Themenauswahl Dropdown dashboard.html*/
+@media (max-width: 480px) {
+  #btn-small {
+    font-size: 0.85rem;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.85rem;
+  }
+
+  #singleplayer-button,
+  #multiplayer-button {
+    font-size: 0.85rem;
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .carousel-caption {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .carousel-item img {
+    height: 18rem;
+    object-fit: cover;
   }
 }
