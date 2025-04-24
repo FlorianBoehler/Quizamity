@@ -141,6 +141,18 @@ label {
   color: red;
 }
 
+.image-section {
+  flex: 1;
+  display: flex;
+  padding-left: 0.5rem;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /***Frageformular quiz.html***/
 .questionform {
   border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
@@ -190,16 +202,17 @@ label {
 
 /***Bild-Container result.html***/
 
-.image-section {
-  flex: 1;
+.container-result {
   display: flex;
-  padding-left: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.image-section img {
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover;
+.form-section-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #result {
@@ -213,7 +226,7 @@ label {
   color: white;
   border: none;
   border-radius: 0.5rem;
-  padding: 0.3rem 0.3rem;
+  padding: 0.3rem;
 }
 
 /**************Media Queries**************/
@@ -316,5 +329,10 @@ label {
   .carousel-item img {
     height: 18rem;
     object-fit: cover;
+  }
+
+  .loginform {
+    padding: 1.5rem;
+    margin: 1rem 0;
   }
 }

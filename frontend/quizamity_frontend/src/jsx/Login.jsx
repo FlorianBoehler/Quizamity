@@ -1,37 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [redirect, setRedirect] = useState(false); // Zustand für die Weiterleitung
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!username || !password) {
+      setError("Benutzername oder Passwort sind erforderlich");
+      return; // Verhindern, dass der Code weiterläuft
+    }
+
+    // Überprüfen der Anmeldedaten
     if (username === "Tobias Brückmann" && password === "quizamity") {
-      window.location.href = "dashboard.html";
+      setRedirect(true); // Weiterleitung setzen
     } else {
       setError("Benutzername oder Passwort falsch, bitte versuche es erneut.");
     }
   };
 
+  // Weiterleitung nach erfolgreicher Anmeldung
+  useEffect(() => {
+    if (redirect) {
+      window.location.href = "/dashboard.html"; // Weiterleitung auf das Dashboard
+    }
+  }, [redirect]); // Die Weiterleitung wird nur ausgelöst, wenn "redirect" wahr ist
+
   return (
-    <form class="loginform" onSubmit={handleSubmit}>
-      <div class="form-group">
-        <label for="inputUsername">Benutzername</label>
+    <form className="loginform" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="inputUsername">Benutzername</label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="inputUsername"
           placeholder="Benutzername"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div class="form-group">
-        <label for="inputPassword">Passwort</label>
+      <div className="form-group">
+        <label htmlFor="inputPassword">Passwort</label>
         <input
           type="password"
-          class="form-control"
+          className="form-control"
           id="inputPassword"
           placeholder="Passwort"
           value={password}
@@ -49,7 +64,7 @@ function Login() {
           </li>
         </ul>
       </div>
-      <div class="loginbutton">
+      <div className="loginbutton">
         <button type="submit" class="button" href="dashboard.html">
           Login
         </button>
