@@ -1,0 +1,338 @@
+/***Allgemeine Formatierungen***/
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background-color: rgb(199, 255, 199);
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#header_img {
+  margin-left: 1rem;
+  height: 10rem;
+  width: 10rem;
+}
+
+#searchInput {
+  background-color: transparent;
+  border: 0.1rem solid green;
+}
+
+ul {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  font-weight: lighter;
+}
+
+a:hover {
+  color: green;
+  text-decoration: underline;
+}
+
+/* Formatierung für Links in .links */
+.links ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.links li {
+  margin-right: 2rem;
+}
+
+.links li a {
+  margin-right: 2rem;
+}
+
+.links a {
+  font-size: large;
+}
+
+main {
+  margin: 0;
+  padding: 1rem;
+}
+
+h1 {
+  font-family: "Quicksand", sans-serif;
+  font-size: 3rem !important;
+  text-align: center; /* Zentriert Text innerhalb Elements */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  margin-top: 2rem;
+  background-color: rgb(199, 255, 199);
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  flex-direction: column; /* Links und Copyright untereinander in Spalten/column */
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center; /* Vertikal zentrieren */
+}
+
+small {
+  text-align: center;
+  align-items: center;
+  font-weight: lighter;
+  margin-left: 1rem;
+}
+
+/***Loginformular index.html***/
+
+/* Formatierung für Links in #loginlinks */
+#loginlinks a {
+  font-size: small;
+}
+/*Formular-Stil */
+.loginform {
+  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
+  padding: 3rem;
+  border-radius: 0.8rem;
+  width: 35rem;
+  margin: 2rem 0;
+  background-color: white;
+}
+
+/*Formularfelder*/
+.form-group,
+.form-check {
+  display: flex; /* Horizontal nebeneinander */
+  align-items: center; /* Vertikale Zentrierung */
+  margin-bottom: 1.5rem; /* Abstand zwischen den Formularfeldern */
+}
+
+/* Abstand zwischen Label und Eingabefeld */
+label {
+  margin-right: 1rem;
+}
+
+.loginbutton,
+.nextbutton {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.button {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+.error {
+  font-size: small;
+  color: red;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  padding-left: 0.5rem;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/***Frageformular quiz.html***/
+.questionform {
+  border: 0.2rem solid green; /*solid = durchgezogener Rahmen*/
+  padding: 4rem;
+  border-radius: 0.8rem;
+  width: 40rem;
+  margin: 2rem 0;
+  background-color: white;
+}
+
+/*Formular-Container */
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.question-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***Carousel dashboard.html***/
+#singleplayer-button,
+#multiplayer-button {
+  text-align: center;
+}
+
+#singleplayer-button {
+  background-color: rgb(241, 178, 60);
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+}
+
+#multiplayer-button {
+  background-color: lightskyblue;
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+}
+
+/***Bild-Container result.html***/
+
+.container-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#result {
+  width: 20rem;
+  height: auto;
+  object-fit: cover;
+}
+
+#exitbutton {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
+/**************Media Queries**************/
+
+/*alles unter Desktopgröße */
+@media (max-width: 1194px) {
+  /*Loginseite ohne Bild*/
+  .image-section,
+  #login-bildquelle {
+    display: none;
+  }
+
+  .form-section {
+    flex: 1 1 100%;
+    padding: 2rem;
+    align-items: center;
+  }
+
+  .loginform {
+    width: 100%;
+    max-width: 30rem;
+  }
+}
+
+/*für Desktop Carousel Dashboardseite nicht ganze Seite ausfüllen*/
+@media (min-width: 992px) {
+  #carouselExampleCaptions {
+    max-width: 80rem;
+    margin: 1rem auto;
+  }
+}
+
+/*Handy Header und Footer*/
+@media (max-width: 480px) {
+  #header_img {
+    margin-left: 1rem;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  #searchInput {
+    display: none;
+  }
+
+  /* Formatierung für Links in .links */
+  .links a {
+    font-size: small;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+    text-align: center;
+  }
+
+  .links li {
+    margin-right: 1rem;
+  }
+
+  .links li a {
+    margin-right: 1rem;
+  }
+
+  footer {
+    margin-top: 1rem;
+    height: 5rem;
+  }
+
+  .copyright {
+    font-size: x-small;
+  }
+}
+/*Handy Themenauswahl Dropdown dashboard.html*/
+@media (max-width: 480px) {
+  #btn-small {
+    font-size: 0.85rem;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.85rem;
+  }
+
+  #singleplayer-button,
+  #multiplayer-button {
+    font-size: 0.85rem;
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .carousel-caption {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .carousel-item img {
+    height: 18rem;
+    object-fit: cover;
+  }
+
+  .loginform {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+}
