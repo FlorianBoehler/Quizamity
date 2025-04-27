@@ -3,11 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/src/styles/style.css" />
-=======
-    <link rel="stylesheet" type="text/css" href="../src/styles/style.css" />
->>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
 
     <title>Quizamity</title>
     <!--Schriftart von Logo einbinden für h1-->
@@ -32,13 +28,13 @@
   <!-- Header-Bereich-->
   <body>
     <header>
-      <a href="/index.html">
+      <a href="/frontend/index.html">
         <img
           id="header_img"
 <<<<<<< HEAD
           src="/img/quizamity-Logo.jpg"
 =======
-          src="./img/quizamity-Logo.jpg"
+          src="./public/img/quizamity-Logo.jpg"
 >>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
           alt="Quizamity-Logo"
         />
@@ -56,75 +52,57 @@
             </form>
           </li>
           <li>
+<<<<<<< HEAD
             <a href="aboutUs.html">Über Uns</a>
             <a href="faq.html">FAQ</a>
+=======
+            <a href="public/aboutUs.html">Über Uns</a>
+            <a href="public/faq.html">FAQ</a>
+>>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
           </li>
         </ul>
       </div>
     </header>
-
     <!-- Content-Bereich-->
-    <h1>Quizfragen</h1>
-    <main class="question-section">
-      <form class="questionform">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="frage1"
-            id="antwort1"
-            value="0"
-          />
-          <label class="form-check-label" for="antwort1">Antwort A</label>
-        </div>
+    <h1>Willkommen bei Quizamity</h1>
+    <main class="container">
+      <section class="form-section">
+        <p>
+          Bereite dich mit interaktiven Quizzes auf deine Prüfungen vor! Lerne
+          die Studieninhalte effizient und spielerisch - ob alleine im
+          Singleplayer-Modus oder gemeinsam im Multiplayer-Modus. Teste dein
+          Wissen, steigere deine Lernmotivation und vergleiche deine
+          Fortschritte mit anderen. Starte jetzt dein Lernabenteuer - mit Spaß
+          und Erfolg!
+        </p>
 
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="frage1"
-            id="antwort2"
-            value="1"
-          />
-          <label class="form-check-label" for="antwort2">Antwort B</label>
-        </div>
+        <div id="root"></div>
+        <!-- Hier wird React gerendert -->
 
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="frage1"
-            id="antwort3"
-            value="0"
-          />
-          <label class="form-check-label" for="antwort3">Antwort C</label>
-        </div>
-
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="frage1"
-            id="antwort4"
-            value="0"
-          />
-          <label class="form-check-label" for="antwort4">Antwort D</label>
-        </div>
-
-        <div class="nextbutton">
-          <button type="submit" class="button" onclick="handleNext()">
-            nächste Frage
-          </button>
-        </div>
-      </form>
+        <script type="module" src="/src/jsx/main.jsx"></script>
+        <!-- React und Logik -->
+      </section>
+      <aside class="image-section">
+<<<<<<< HEAD
+        <img src="/img/student.png" alt="Login-Bild" />
+=======
+        <img src="/public/img/student.png" alt="Login-Bild" />
+>>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
+      </aside>
     </main>
+    <small id="login-bildquelle">Bildquelle: Pixabay</small>
     <!--Footer-Bereich-->
     <footer>
       <div class="links">
         <ul>
           <li>
-            <a href="imprint.html">Impressum</a>
-            <a href="privacy.html">Datenschutz</a>
+<<<<<<< HEAD
+            <a href="/imprint.html">Impressum</a>
+            <a href="/privacy.html">Datenschutz</a>
+=======
+            <a href="/public/imprint.html">Impressum</a>
+            <a href="/public/privacy.html">Datenschutz</a>
+>>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
             <a href="https://mycampus.iu.org/login">IU MyCampus</a>
           </li>
         </ul>
