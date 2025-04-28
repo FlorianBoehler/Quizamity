@@ -10,6 +10,7 @@
 
     <quickStartSecurity userName="duke" userPassword="dukeduke"/>
 
+ <!--
     <dataSource id="DefaultDataSource" jndiName="jdbc/postgresql">
         <jdbcDriver libraryRef="postgresql-library"/>
         <properties.postgresql serverName="quizamity-store"
@@ -22,4 +23,5 @@
     <library id="postgresql-library">
         <fileset dir="/opt/ol/wlp/lib"/>
     </library>
+-->
 </server>

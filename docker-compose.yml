@@ -3,17 +3,18 @@ services:
   quizamity-client-application:
     build: frontend/
     ports:
-      - "8080:80"
+       - "8080:5173"
+ #     - "8080:80"
   quizamity-server-application:
     build: .
     ports:
       - "9080:9080"
       - "9443:9443"
-    links:
-      - quizamity-store
-  quizamity-store:
-    image: postgres:12
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: postgres
+  #  links:
+  #   - quizamity-store
+  #quizamity-store:
+  #  image: postgres:12
+  #  ports:
+  #    - "5432:5432"
+  #  environment:
+  #    POSTGRES_PASSWORD: postgres
