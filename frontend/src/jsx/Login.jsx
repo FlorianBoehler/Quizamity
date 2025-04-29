@@ -10,11 +10,7 @@ function Login() {
     e.preventDefault();
 
     if (!username || !password) {
-<<<<<<< HEAD
-      setError("Benutzername oder Passwort sind erforderlich.");
-=======
       setError("Benutzername oder Passwort sind erforderlich");
->>>>>>> 25bd2b8c2f14ca36509e3f188df6af3c59ca27e6
       return; // Verhindern, dass der Code weiterläuft
     }
 
