@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Login from "../../frontend/jsx/Login.jsx";
+import Login from "../../frontend/src/jsx/Login.jsx";
 
 describe("Login", () => {
   test("zeigt Fehlermeldung bei ungültigen Anmeldedaten", () => {
