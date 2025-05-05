@@ -15,6 +15,8 @@
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
         <junit.version>5.10.2</junit.version>
+        <frontend.maven.plugin.version>1.15.0</frontend.maven.plugin.version>
+        <nodejs.version>v20.12.0</nodejs.version>
     </properties>
 
     <dependencies>
@@ -85,7 +87,17 @@
             <artifactId>resteasy-jackson2-provider</artifactId>
             <version>6.2.5.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.dkanejs.maven.plugins</groupId>
+            <artifactId>docker-compose-maven-plugin</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -94,6 +106,119 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend.maven.plugin.version}</version>
+                <configuration>
+                    <nodeVersion>${nodejs.version}</nodeVersion>
+                    <workingDirectory>frontend</workingDirectory>
+                    <installDirectory>frontend/dist</installDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>vite build</id>
+                        <goals>
+                            <goal>npx</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>vite build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>Sources public Kopie</id>
+                            <phase>package</phase>
+                        <!-- <phase>
+                            generate-sources
+                        </phase> -->
+                        <configuration>
+                            <target>
+                                <mkdir dir="${basedir}/frontend/dist/public" />
+                                <copy todir="${basedir}/frontend/dist/public">
+                                    <fileset dir="${basedir}/frontend/src/public" includes="*.*" />
+                                </copy><!-- Place any Ant task here. -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Sources js Kopie</id>
+                        <phase>package</phase>
+                        <!-- <phase>
+                            generate-sources
+                        </phase> -->
+                        <configuration>
+                            <target>
+                                <mkdir dir="${basedir}/frontend/dist/js" />
+                                <copy todir="${basedir}/frontend/dist/js">
+                                    <fileset dir="${basedir}/frontend/src/js" includes="*.*" />
+                                </copy><!-- Place any Ant task here. -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Sources img Kopie</id>
+                        <phase>package</phase>
+                        <!-- <phase>
+                            generate-sources
+                        </phase> -->
+                        <configuration>
+                            <target>
+                                <mkdir dir="${basedir}/frontend/dist/public/img" />
+                                <copy todir="${basedir}/frontend/dist/public/img">
+                                    <fileset dir="${basedir}/frontend/src/public/img" includes="*.*" />
+                                </copy><!-- Place any Ant task here. -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Sources styles Kopie</id>
+                        <phase>package</phase>
+                        <!-- <phase>
+                            generate-sources
+                        </phase> -->
+                        <configuration>
+                            <target>
+                                <mkdir dir="${basedir}/frontend/dist/public/styles" />
+                                <copy todir="${basedir}/frontend/dist/public/styles">
+                                    <fileset dir="${basedir}/frontend/src/public/styles" includes="*.*" />
+                                </copy><!-- Place any Ant task here. -->
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -109,6 +234,46 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>5.0.0.Final</version>
+            </plugin>
+            <plugin>
+                <groupId>com.dkanejs.maven.plugins</groupId>
+                <artifactId>docker-compose-maven-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <id>pull</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>pull</goal>
+                        </goals>
+                        <configuration>
+                            <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+                            <ignorePullFailures>true</ignorePullFailures>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>up</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>up</goal>
+                        </goals>
+                        <configuration>
+                            <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+                            <detachedMode>true</detachedMode>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>down</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>down</goal>
+                        </goals>
+                        <configuration>
+                            <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+                            <removeVolumes>true</removeVolumes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
