@@ -25,10 +25,10 @@ public class User {
     @Column(nullable = false)
     private String role;  // STUDENT, MODERATOR, ADMIN
 
-    // Standard-Konstruktor
+    // Standard-Constructor
     public User() {}
 
-    // Convenience-Konstruktor
+    // Convenience-Constructor
     public User(String username, String passwordHash, String email, String role) {
         this.username = username;
         this.passwordHash = passwordHash;
