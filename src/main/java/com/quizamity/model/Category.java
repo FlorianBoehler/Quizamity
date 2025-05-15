@@ -1,14 +1,20 @@
 package com.quizamity.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
+import java.util.UUID;
+
 
 @Entity
 @Table(name = "categories")
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @UuidGenerator
+    @Column(updatable = false, nullable = false)
+    private UUID id;
+
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -22,13 +28,9 @@ public class Category {
     }
 
     // Getter & Setter
-    public Long getId() {
-        return id;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

@@ -1,3 +1,5 @@
+frontend/
+**/.idea
 **/.classpath
 **/.dockerignore
 **/.env
@@ -23,3 +25,4 @@
 **/values.dev.yaml
 LICENSE
 README.md
+
