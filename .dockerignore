@@ -1,0 +1,4 @@
+# Ignored Directories
+frontend/
+.idea/
+.vscode/
