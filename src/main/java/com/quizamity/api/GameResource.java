@@ -1,13 +1,15 @@
 package com.quizamity.api;
 
-import com.quizamity.model.Game;
+import com.quizamity.dto.GameCreateDto;
+import com.quizamity.dto.GameResponseDto;
+import com.quizamity.dto.GameUpdateDto;
 import com.quizamity.service.GameService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import java.util.List;
@@ -23,36 +25,26 @@ public class GameResource {
     private GameService gameService;
 
     @POST
-    @Operation(summary = "Spiel erstellen", description = "Erstellt ein neues Spiel mit Kategorie und Spielmodus.")
-    public Response createGame(Game game) {
-        gameService.createGame(game);
+    @Operation(summary = "Spiel erstellen", description = "Legt ein neues Spiel mit Modus und Kategorie an.")
+    public Response createGame(@Valid GameCreateDto dto) {
+        gameService.createGame(dto);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("/{id}")
-    @Operation(summary = "Spiel abrufen", description = "Gibt ein Spiel anhand der ID zurück.")
-    public Response getGame(
-            @Parameter(description = "ID des Spiels") @PathParam("id") UUID id) {
-
+    @Operation(summary = "Spiel abrufen")
+    public Response getGame(@PathParam("id") UUID id) {
         return gameService.getGame(id)
-                .map(g -> Response.ok(g).build())
+                .map(Response::ok)
+                .map(Response.ResponseBuilder::build)
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @GET
-    @Operation(summary = "Alle Spiele abrufen", description = "Liefert eine Liste aller gespeicherten Spiele.")
-    public List<Game> getAllGames() {
+    @Operation(summary = "Alle Spiele abrufen")
+    public List<GameResponseDto> getAllGames() {
         return gameService.getAllGames();
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Operation(summary = "Spiel aktualisieren")
-    public Response updateGame(@PathParam("id") UUID id, Game game) {
-        return gameService.updateGame(id, game)
-                ? Response.ok().build()
-                : Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @DELETE
@@ -63,4 +55,14 @@ public class GameResource {
                 ? Response.noContent().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
+
+    @PUT
+    @Path("/{id}")
+    @Operation(summary = "Spiel aktualisieren", description = "Aktualisiert ein bestehendes Spiel.")
+    public Response updateGame(@PathParam("id") UUID id, @Valid GameUpdateDto dto) {
+        return gameService.updateGame(id, dto)
+                ? Response.ok().build()
+                : Response.status(Response.Status.NOT_FOUND).build();
+    }
+
 }

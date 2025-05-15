@@ -1,7 +1,15 @@
 package com.quizamity.service;
 
 import com.quizamity.dao.GameSessionDao;
+import com.quizamity.dto.GameSessionCreateDto;
+import com.quizamity.dto.GameSessionResponseDto;
+import com.quizamity.dto.GameSessionUpdateDto;
+import com.quizamity.dao.GameDao;
+import com.quizamity.dao.UserDao;
+import com.quizamity.mapper.GameSessionMapper;
+import com.quizamity.model.Game;
 import com.quizamity.model.GameSession;
+import com.quizamity.model.User;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -15,42 +23,57 @@ public class GameSessionService {
     @Inject
     private GameSessionDao gameSessionDao;
 
-    public void createGameSession(GameSession gameSession) {
-        gameSessionDao.create(gameSession);
+    @Inject
+    private GameDao gameDao;
+
+    @Inject
+    private UserDao userDao;
+
+    public void createGameSession(GameSessionCreateDto dto) {
+        Game game = gameDao.findById(dto.gameId)
+                .orElseThrow(() -> new IllegalArgumentException("Spiel nicht gefunden"));
+        User user = userDao.findById(dto.userId)
+                .orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
+
+        GameSession session = GameSessionMapper.toEntity(dto, game, user);
+        gameSessionDao.create(session);
     }
 
-    public Optional<GameSession> getGameSession(UUID id) {
-        return gameSessionDao.findById(id);
+    public Optional<GameSessionResponseDto> getGameSession(UUID id) {
+        return gameSessionDao.findById(id).map(GameSessionMapper::toDto);
     }
 
-    public List<GameSession> getAllGameSessions() {
-        return gameSessionDao.findAll();
+    public List<GameSessionResponseDto> getAllGameSessions() {
+        return gameSessionDao.findAll().stream()
+                .map(GameSessionMapper::toDto)
+                .toList();
     }
 
-    public List<GameSession> getGameSessionsByGame(UUID gameId) {
-        return gameSessionDao.findByGameId(gameId);
+    public List<GameSessionResponseDto> getSessionsByGame(UUID gameId) {
+        return gameSessionDao.findByGameId(gameId).stream()
+                .map(GameSessionMapper::toDto)
+                .toList();
     }
 
-    public List<GameSession> getGameSessionsByUser(UUID userId) {
-        return gameSessionDao.findByUserId(userId);
+    public List<GameSessionResponseDto> getSessionsByUser(UUID userId) {
+        return gameSessionDao.findByUserId(userId).stream()
+                .map(GameSessionMapper::toDto)
+                .toList();
     }
 
-    public boolean updateGameSession(UUID id, GameSession updated) {
-        return gameSessionDao.findById(id).map(gs -> {
-            gs.setGame(updated.getGame());
-            gs.setUser(updated.getUser());
-            gs.setScore(updated.getScore());
-            gs.setCorrectAnswers(updated.getCorrectAnswers());
-            gs.setMistakes(updated.getMistakes());
-            gameSessionDao.update(gs);
+    public boolean updateGameSession(UUID id, GameSessionUpdateDto dto) {
+        return gameSessionDao.findById(id).map(session -> {
+            GameSessionMapper.updateEntity(session, dto);
+            gameSessionDao.update(session);
             return true;
         }).orElse(false);
     }
 
     public boolean deleteGameSession(UUID id) {
-        return gameSessionDao.findById(id).map(gs -> {
-            gameSessionDao.delete(gs);
+        return gameSessionDao.findById(id).map(session -> {
+            gameSessionDao.delete(session);
             return true;
         }).orElse(false);
     }
+
 }

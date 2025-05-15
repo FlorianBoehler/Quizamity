@@ -53,7 +53,7 @@ public class QuestionInitializer {
 
         for (Question q : questions) {
             questionService.findByText(q.getText()).orElseGet(() -> {
-                questionService.createQuestion(q);
+                questionService.createDirect(q);
                 return q;
             });
         }

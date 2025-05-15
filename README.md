@@ -34,7 +34,7 @@ mvn clean package
 docker compose up -d --build
 ```
 
-Use toe following command to show the server logs
+Use toe following command to view the server logs
 
 ```bash
 docker compose logs -f

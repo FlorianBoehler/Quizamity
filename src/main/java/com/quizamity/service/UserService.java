@@ -70,4 +70,9 @@ public class UserService {
         return userDao.findByUsername(username);
     }
 
+    public Optional<User> getUserEntity(UUID id) {
+        return userDao.findById(id);
+    }
+
+
 }

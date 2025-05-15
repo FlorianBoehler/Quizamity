@@ -1,8 +1,12 @@
 package com.quizamity.api;
 
+import com.quizamity.dto.GameParticipantCreateDto;
+import com.quizamity.dto.GameParticipantResponseDto;
+import com.quizamity.dto.GameParticipantUpdateDto;
 import com.quizamity.model.GameParticipant;
 import com.quizamity.service.GameParticipantService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -20,49 +24,50 @@ import java.util.UUID;
 public class GameParticipantResource {
 
     @Inject
-    private GameParticipantService service;
+    private GameParticipantService gameParticipantService;
 
     @POST
-    @Operation(summary = "Teilnehmer erstellen", description = "Registriert einen Teilnehmer für ein Spiel.")
-    public Response createParticipant(GameParticipant participant) {
-        service.create(participant);
+    @Operation(summary = "Teilnehmer erstellen")
+    public Response createParticipant(@Valid GameParticipantCreateDto dto) {
+        gameParticipantService.createParticipant(dto);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("/{id}")
-    @Operation(summary = "Teilnehmer abrufen", description = "Liefert einen Spielteilnehmer anhand der ID.")
+    @Operation(summary = "Teilnehmer abrufen")
     public Response getParticipant(@PathParam("id") UUID id) {
-        return service.getById(id)
-                .map(p -> Response.ok(p).build())
+        return gameParticipantService.getById(id)
+                .map(Response::ok)
+                .map(Response.ResponseBuilder::build)
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @GET
-    @Operation(summary = "Alle Teilnehmer", description = "Listet alle GameParticipants.")
-    public List<GameParticipant> getAllParticipants() {
-        return service.getAll();
+    @Operation(summary = "Alle Teilnehmer")
+    public List<GameParticipantResponseDto> getAllParticipants() {
+        return gameParticipantService.getAll();
     }
 
     @GET
     @Path("/game/{gameId}")
-    @Operation(summary = "Teilnehmer eines Spiels", description = "Listet Teilnehmer eines bestimmten Spiels.")
-    public List<GameParticipant> getByGame(@PathParam("gameId") UUID gameId) {
-        return service.getByGame(gameId);
+    @Operation(summary = "Teilnehmer eines Spiels")
+    public List<GameParticipantResponseDto> getByGame(@PathParam("gameId") UUID gameId) {
+        return gameParticipantService.getByGame(gameId);
     }
 
     @GET
     @Path("/user/{userId}")
-    @Operation(summary = "Teilnahmen eines Nutzers", description = "Listet alle Spielteilnahmen eines bestimmten Nutzers.")
-    public List<GameParticipant> getByUser(@PathParam("userId") UUID userId) {
-        return service.getByUser(userId);
+    @Operation(summary = "Teilnahmen eines Nutzers")
+    public List<GameParticipantResponseDto> getByUser(@PathParam("userId") UUID userId) {
+        return gameParticipantService.getByUser(userId);
     }
 
     @PUT
     @Path("/{id}")
     @Operation(summary = "Teilnehmer aktualisieren")
-    public Response updateParticipant(@PathParam("id") UUID id, GameParticipant participant) {
-        return service.update(id, participant)
+    public Response updateParticipant(@PathParam("id") UUID id, @Valid GameParticipantUpdateDto dto) {
+        return gameParticipantService.update(id, dto)
                 ? Response.ok().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -71,8 +76,9 @@ public class GameParticipantResource {
     @Path("/{id}")
     @Operation(summary = "Teilnehmer löschen")
     public Response deleteParticipant(@PathParam("id") UUID id) {
-        return service.delete(id)
+        return gameParticipantService.delete(id)
                 ? Response.noContent().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
+
 }

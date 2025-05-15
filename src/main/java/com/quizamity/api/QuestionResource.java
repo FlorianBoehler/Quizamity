@@ -1,8 +1,11 @@
 package com.quizamity.api;
 
-import com.quizamity.model.Question;
+import com.quizamity.dto.QuestionCreateDto;
+import com.quizamity.dto.QuestionResponseDto;
+import com.quizamity.dto.QuestionUpdateDto;
 import com.quizamity.service.QuestionService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -24,8 +27,8 @@ public class QuestionResource {
 
     @POST
     @Operation(summary = "Neue Frage erstellen", description = "Legt eine neue Frage mit Text, Schwierigkeit, Kategorie und Ersteller an.")
-    public Response createQuestion(Question question) {
-        questionService.createQuestion(question);
+    public Response createQuestion(@Valid QuestionCreateDto dto) {
+        questionService.createQuestion(dto);
         return Response.status(Response.Status.CREATED).build();
     }
 
@@ -37,13 +40,14 @@ public class QuestionResource {
             @PathParam("id") UUID id) {
 
         return questionService.getQuestion(id)
-                .map(q -> Response.ok(q).build())
+                .map(Response::ok)
+                .map(Response.ResponseBuilder::build)
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @GET
     @Operation(summary = "Alle Fragen abrufen", description = "Gibt eine Liste aller Fragen zurück.")
-    public List<Question> getAllQuestions() {
+    public List<QuestionResponseDto> getAllQuestions() {
         return questionService.getAllQuestions();
     }
 
@@ -53,9 +57,9 @@ public class QuestionResource {
     public Response updateQuestion(
             @Parameter(description = "ID der zu aktualisierenden Frage", required = true)
             @PathParam("id") UUID id,
-            Question question) {
+            @Valid QuestionUpdateDto dto) {
 
-        return questionService.updateQuestion(id, question)
+        return questionService.updateQuestion(id, dto)
                 ? Response.ok().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }

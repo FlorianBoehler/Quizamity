@@ -1,8 +1,12 @@
 package com.quizamity.api;
 
+import com.quizamity.dto.GameSessionResponseDto;
+import com.quizamity.dto.GameSessionUpdateDto;
+import com.quizamity.dto.GameSessionCreateDto;
 import com.quizamity.model.GameSession;
 import com.quizamity.service.GameSessionService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -23,48 +27,47 @@ public class GameSessionResource {
     private GameSessionService gameSessionService;
 
     @POST
-    @Operation(summary = "GameSession erstellen", description = "Erstellt einen neuen Spielverlauf.")
-    public Response createGameSession(GameSession gameSession) {
-        gameSessionService.createGameSession(gameSession);
+    @Operation(summary = "GameSession erstellen")
+    public Response createGameSession(@Valid GameSessionCreateDto dto) {
+        gameSessionService.createGameSession(dto);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("/{id}")
-    @Operation(summary = "GameSession abrufen", description = "Gibt eine GameSession anhand der ID zurück.")
-    public Response getGameSession(
-            @Parameter(description = "ID der GameSession") @PathParam("id") UUID id) {
-
+    @Operation(summary = "GameSession abrufen")
+    public Response getGameSession(@PathParam("id") UUID id) {
         return gameSessionService.getGameSession(id)
-                .map(gs -> Response.ok(gs).build())
+                .map(Response::ok)
+                .map(Response.ResponseBuilder::build)
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
     @GET
-    @Operation(summary = "Alle GameSessions abrufen", description = "Liefert alle gespeicherten Spielverläufe.")
-    public List<GameSession> getAllGameSessions() {
+    @Operation(summary = "Alle GameSessions abrufen")
+    public List<GameSessionResponseDto> getAllGameSessions() {
         return gameSessionService.getAllGameSessions();
     }
 
     @GET
     @Path("/game/{gameId}")
-    @Operation(summary = "Sessions zu einem Spiel", description = "Liefert alle Sessions zu einem bestimmten Spiel.")
-    public List<GameSession> getSessionsByGame(@PathParam("gameId") UUID gameId) {
-        return gameSessionService.getGameSessionsByGame(gameId);
+    @Operation(summary = "Sessions eines Spiels abrufen")
+    public List<GameSessionResponseDto> getSessionsByGame(@PathParam("gameId") UUID gameId) {
+        return gameSessionService.getSessionsByGame(gameId);
     }
 
     @GET
     @Path("/user/{userId}")
-    @Operation(summary = "Sessions eines Nutzers", description = "Liefert alle Sessions eines bestimmten Nutzers.")
-    public List<GameSession> getSessionsByUser(@PathParam("userId") UUID userId) {
-        return gameSessionService.getGameSessionsByUser(userId);
+    @Operation(summary = "Sessions eines Nutzers abrufen")
+    public List<GameSessionResponseDto> getSessionsByUser(@PathParam("userId") UUID userId) {
+        return gameSessionService.getSessionsByUser(userId);
     }
 
     @PUT
     @Path("/{id}")
     @Operation(summary = "GameSession aktualisieren")
-    public Response updateGameSession(@PathParam("id") UUID id, GameSession updated) {
-        return gameSessionService.updateGameSession(id, updated)
+    public Response updateGameSession(@PathParam("id") UUID id, @Valid GameSessionUpdateDto dto) {
+        return gameSessionService.updateGameSession(id, dto)
                 ? Response.ok().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -77,4 +80,5 @@ public class GameSessionResource {
                 ? Response.noContent().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
+
 }

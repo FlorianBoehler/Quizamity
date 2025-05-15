@@ -102,9 +102,10 @@ public class AnswerInitializer {
             if (answerService.getAnswersByQuestion(question.getId()).isEmpty()) {
                 for (Answer answer : answers) {
                     answer.setQuestion(question);
-                    answerService.createAnswer(answer);
+                    answerService.createDirect(answer);
                 }
             }
         });
     }
+
 }
