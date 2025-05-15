@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<server description="new server">
+<server description="Quizamity Server">
 
     <featureManager>
-        <feature>javaee-10.0</feature>
+        <feature>jakartaee-10.0</feature>
         <feature>microProfile-7.0</feature>
+        <feature>jdbc-4.3</feature>
+        <feature>restfulWS-3.1</feature>
+        <feature>servlet-6.0</feature>
+        <feature>mpOpenAPI-4.0</feature>
     </featureManager>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
     <quickStartSecurity userName="duke" userPassword="dukeduke"/>
 
- <!--
-    <dataSource id="DefaultDataSource" jndiName="jdbc/postgresql">
-        <jdbcDriver libraryRef="postgresql-library"/>
-        <properties.postgresql serverName="quizamity-store"
-                               portNumber="5432"
-                               databaseName="postgres"
-                               user="postgres"
-                               password="postgres"/>
+    <!-- PostgreSQL Datenquelle -->
+    <dataSource id="PostgreSQLDS" jndiName="jdbc/quizamityDS">
+        <jdbcDriver libraryRef="postgresql-lib"/>
+        <properties.postgresql
+                serverName="quizamity-db"
+                portNumber="5432"
+                databaseName="quizamity"
+                user="quizuser"
+                password="secret"/>
     </dataSource>
 
-    <library id="postgresql-library">
-        <fileset dir="/opt/ol/wlp/lib"/>
+    <library id="postgresql-lib">
+        <fileset dir="/config/resources" includes="postgresql-*.jar"/>
     </library>
--->
 </server>

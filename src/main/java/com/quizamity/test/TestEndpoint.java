@@ -16,7 +16,7 @@ import java.util.List;
 @RequestScoped
 public class TestEndpoint {
 
-    @PersistenceContext(unitName = "myPU")
+    @PersistenceContext(unitName = "quizamityPU")
     private EntityManager em;
 
     @GET

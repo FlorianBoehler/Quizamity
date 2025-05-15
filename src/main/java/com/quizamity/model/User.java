@@ -1,6 +1,8 @@
 package com.quizamity.model;
 
 import jakarta.persistence.*;
+import java.util.UUID;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -10,8 +12,10 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @UuidGenerator
+    @Column(updatable = false, nullable = false)
+    private UUID id;
 
     @Column(nullable = false)
     private String username;
@@ -22,14 +26,17 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String role;  // STUDENT, MODERATOR, ADMIN
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role", nullable = false)
+    private Role role;  // STUDENT, MODERATOR, ADMIN
 
-    // Standard-Konstruktor
+    // Standard-Constructor
     public User() {}
 
-    // Convenience-Konstruktor
-    public User(String username, String passwordHash, String email, String role) {
+    // Convenience-Constructor
+
+    public User(String username, String passwordHash, String email, Role role) {
+
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;
@@ -37,8 +44,8 @@ public class User {
     }
 
     // Getter & Setter
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
@@ -49,6 +56,6 @@ public class User {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
 }

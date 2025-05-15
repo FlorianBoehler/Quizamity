@@ -10,3 +10,37 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Build
+
+```bash
+mvn clean package
+docker-compose up --build
+```
+
+## Rebuild with Docker-Compose V1
+
+```bash
+docker-compose down -v
+docker system prune -a --volumes
+mvn clean package
+docker-compose up --build
+```
+
+## Rebuild with Docker Compose V2
+
+```bash
+mvn clean package
+docker compose up -d --build
+```
+
+Use toe following command to view the server logs
+
+```bash
+docker compose logs -f
+```
+
+## API Documentation
+
+http://localhost:9080/openapi/ui/
+

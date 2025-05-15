@@ -4,16 +4,31 @@ services:
     build: frontend/
     ports:
       - "8080:80"
+
   quizamity-server-application:
     build: .
     ports:
       - "9080:9080"
       - "9443:9443"
-  #  links:
-  #   - quizamity-store
-  #quizamity-store:
-  #  image: postgres:12
-  #  ports:
-  #    - "5432:5432"
-  #  environment:
-  #    POSTGRES_PASSWORD: postgres
+    depends_on:
+      - quizamity-db
+    environment:
+      DB_HOST: quizamity-db
+      DB_PORT: 5432
+      DB_NAME: quizamity
+      DB_USER: quizuser
+      DB_PASSWORD: secret
+
+  quizamity-db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: quizamity
+      POSTGRES_USER: quizuser
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
