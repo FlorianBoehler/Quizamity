@@ -2,6 +2,7 @@ package com.quizamity.service;
 
 import com.quizamity.dao.CategoryDao;
 import com.quizamity.model.Category;
+import com.quizamity.model.Role;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -25,6 +26,10 @@ public class CategoryService {
 
     public List<Category> getAllCategories() {
         return categoryDao.findAll();
+    }
+
+    public Optional<Category> findByName(String name) {
+        return categoryDao.findByName(name);
     }
 
     public boolean updateCategory(UUID id, Category updatedCategory) {

@@ -1,6 +1,7 @@
 package com.quizamity.service;
 
 import com.quizamity.dao.UserDao;
+import com.quizamity.model.Role;
 import com.quizamity.model.User;
 import com.quizamity.security.PasswordService;  // Sicherstellen, dass das korrekt importiert ist
 import jakarta.ejb.Stateless;
@@ -34,6 +35,10 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userDao.findAll();
+    }
+
+    public Optional<User> findByUsername(String username) {
+        return userDao.findByUsername(username);
     }
 
     public boolean updateUser(UUID id, User updatedUser) {
