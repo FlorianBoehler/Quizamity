@@ -34,7 +34,9 @@ public class User {
     public User() {}
 
     // Convenience-Constructor
+
     public User(String username, String passwordHash, String email, Role role) {
+
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;

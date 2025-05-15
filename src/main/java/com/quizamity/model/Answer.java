@@ -14,6 +14,7 @@ public class Answer {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
@@ -35,8 +36,10 @@ public class Answer {
     }
 
     // Getter & Setter
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+
 
     public Question getQuestion() { return question; }
     public void setQuestion(Question question) { this.question = question; }

@@ -2,8 +2,10 @@ package com.quizamity.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
 import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
+
 
 @Entity
 @Table(name = "games")
@@ -14,6 +16,7 @@ public class Game {
     @UuidGenerator
     @Column(updatable = false, nullable = false)
     private UUID id;
+
 
     @Column(nullable = false)
     private int mode;
@@ -40,8 +43,10 @@ public class Game {
     }
 
     // Getter & Setter
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+
 
     public int getMode() { return mode; }
     public void setMode(int mode) { this.mode = mode; }

@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background-color: rgb(199, 255, 199);
+  background-color: rgb(208, 255, 199);
   width: 100%;
   height: fit-content;
   display: flex;
@@ -77,7 +77,7 @@ h1 {
 
 footer {
   margin-top: 2rem;
-  background-color: rgb(199, 255, 199);
+  background-color: rgb(208, 255, 199);
   width: 100%;
   height: 10rem;
   display: flex;
@@ -180,26 +180,47 @@ label {
 
 /***Carousel dashboard.html***/
 #singleplayer-button,
-#multiplayer-button {
+#multiplayer-button,
+#lobby-button1,
+#lobby-button2,
+#lobby-button3,
+#lobby-button4 {
   text-align: center;
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
 }
 
 #singleplayer-button {
   background-color: rgb(241, 178, 60);
-  color: black;
-  border: none;
-  border-radius: 2rem;
-  padding: 1rem 2rem;
 }
 
 #multiplayer-button {
   background-color: lightskyblue;
-  color: black;
-  border: none;
-  border-radius: 2rem;
-  padding: 1rem 2rem;
 }
 
+#lobby-button1 {
+  background-color: lightsalmon;
+}
+#lobby-button2 {
+  background-color: lightgreen;
+}
+#lobby-button3 {
+  background-color: rgb(204, 84, 84);
+}
+#lobby-button4 {
+  background-color: lightblue;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-wrapper button {
+  flex: 1 1 calc(50% - 10px); /* zwei nebeneinander */
+}
 /***Bild-Container result.html***/
 
 .container-result {
@@ -259,6 +280,53 @@ label {
   }
 }
 
+/*Handy Themenauswahl Dropdown dashboard.html*/
+@media (max-width: 480px) {
+  #btn-small {
+    font-size: 0.85rem;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.85rem;
+  }
+
+  #singleplayer-button,
+  #multiplayer-button,
+  #lobby-button1,
+  #lobby-button2,
+  #lobby-button3,
+  #lobby-button4 {
+    font-size: 0.85rem;
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .carousel-caption {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .button-wrapper button {
+    flex: 1 1 100%;
+  }
+
+  .carousel-item img {
+    height: 18rem;
+    object-fit: cover;
+  }
+
+  .loginform {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+}
+
 /*Handy Header und Footer*/
 @media (max-width: 480px) {
   #header_img {
@@ -296,43 +364,5 @@ label {
 
   .copyright {
     font-size: x-small;
-  }
-}
-/*Handy Themenauswahl Dropdown dashboard.html*/
-@media (max-width: 480px) {
-  #btn-small {
-    font-size: 0.85rem;
-  }
-
-  .carousel-caption h5 {
-    font-size: 1.25rem;
-  }
-
-  .carousel-caption p {
-    font-size: 0.85rem;
-  }
-
-  #singleplayer-button,
-  #multiplayer-button {
-    font-size: 0.85rem;
-    border-radius: 1rem;
-    padding: 0.85rem 1rem;
-  }
-
-  .carousel-caption {
-    display: block;
-    flex-direction: column;
-    align-items: center;
-    overflow: visible;
-  }
-
-  .carousel-item img {
-    height: 18rem;
-    object-fit: cover;
-  }
-
-  .loginform {
-    padding: 1.5rem;
-    margin: 1rem 0;
   }
 }

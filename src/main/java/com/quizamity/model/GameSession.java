@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
+
 @Entity
 @Table(name = "game_sessions")
 public class GameSession {
 
     @Id
+
     @GeneratedValue
     @UuidGenerator
     @Column(updatable = false, nullable = false)
@@ -44,8 +46,10 @@ public class GameSession {
     }
 
     // Getter & Setter
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+
 
     public Game getGame() { return game; }
     public void setGame(Game game) { this.game = game; }

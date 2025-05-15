@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
+
 @Entity
 @Table(name = "game_participants")
 public class GameParticipant {
@@ -14,6 +15,7 @@ public class GameParticipant {
     @UuidGenerator
     @Column(updatable = false, nullable = false)
     private UUID id;
+
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "game_id", nullable = false)
@@ -41,8 +43,10 @@ public class GameParticipant {
     }
 
     // Getter & Setter
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+
 
     public Game getGame() { return game; }
     public void setGame(Game game) { this.game = game; }
