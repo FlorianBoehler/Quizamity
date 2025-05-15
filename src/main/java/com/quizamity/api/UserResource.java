@@ -1,13 +1,15 @@
 package com.quizamity.api;
 
-import com.quizamity.model.User;
+import com.quizamity.dto.UserCreateDto;
+import com.quizamity.dto.UserResponseDto;
+import com.quizamity.dto.UserUpdateDto;
 import com.quizamity.service.UserService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import java.util.List;
@@ -24,51 +26,43 @@ public class UserResource {
 
     @POST
     @Operation(summary = "Neuen Benutzer erstellen", description = "Legt einen neuen Benutzer mit Benutzername, E-Mail, Passwort und Rolle an.")
-    public Response createUser(User user) {
-        userService.createUser(user);
+    public Response createUser(@Valid UserCreateDto dto) {
+        userService.createUser(dto);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("/{id}")
     @Operation(summary = "Benutzer abrufen", description = "Gibt den Benutzer mit der angegebenen UUID zurück.")
-    public Response getUser(
-            @Parameter(description = "ID des Benutzers", required = true)
-            @PathParam("id") UUID id) {
-
-        return userService.getUser(id)
-                .map(user -> Response.ok(user).build())
+    public Response getUser(@PathParam("id") UUID id) {
+        return userService.getUser(id) // Optional<UserResponseDto>
+                .map(dto -> Response.ok(dto).build())
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
+
     @GET
     @Operation(summary = "Alle Benutzer abrufen", description = "Gibt eine Liste aller Benutzer im System zurück.")
-    public List<User> getAllUsers() {
+    public List<UserResponseDto> getAllUsers() {
         return userService.getAllUsers();
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Operation(summary = "Benutzer aktualisieren", description = "Aktualisiert die Daten eines bestehenden Benutzers.")
-    public Response updateUser(
-            @Parameter(description = "ID des zu aktualisierenden Benutzers", required = true)
-            @PathParam("id") UUID id,
-            User user) {
-
-        return userService.updateUser(id, user)
-                ? Response.ok().build()
-                : Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @DELETE
     @Path("/{id}")
     @Operation(summary = "Benutzer löschen", description = "Löscht den Benutzer mit der angegebenen ID.")
-    public Response deleteUser(
-            @Parameter(description = "ID des zu löschenden Benutzers", required = true)
-            @PathParam("id") UUID id) {
-
+    public Response deleteUser(@PathParam("id") UUID id) {
         return userService.deleteUser(id)
                 ? Response.noContent().build()
                 : Response.status(Response.Status.NOT_FOUND).build();
     }
+
+    @PUT
+    @Path("/{id}")
+    @Operation(summary = "Benutzer aktualisieren", description = "Aktualisiert die Daten eines bestehenden Benutzers.")
+    public Response updateUser(@PathParam("id") UUID id, @Valid UserUpdateDto dto) {
+        return userService.updateUser(id, dto)
+                ? Response.ok().build()
+                : Response.status(Response.Status.NOT_FOUND).build();
+    }
+
 }

@@ -1,15 +1,21 @@
 package com.quizamity.service;
 
 import com.quizamity.dao.UserDao;
+import com.quizamity.dto.UserCreateDto;
+import com.quizamity.dto.UserResponseDto;
+import com.quizamity.dto.UserUpdateDto;
+import com.quizamity.mapper.UserMapper;
 import com.quizamity.model.Role;
 import com.quizamity.model.User;
-import com.quizamity.security.PasswordService;  // Sicherstellen, dass das korrekt importiert ist
+import com.quizamity.security.PasswordService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Stateless
 public class UserService {
@@ -23,38 +29,24 @@ public class UserService {
     @Inject
     private RoleService roleService;
 
-    public void createUser(User user) {
-        String hashedPassword = passwordService.hash(user.getPasswordHash());
-        user.setPasswordHash(hashedPassword);
+    public void createUser(UserCreateDto dto) {
+        Role role = roleService.findByName(dto.roleName)
+                .orElseThrow(() -> new IllegalArgumentException("Ungültige Rolle: " + dto.roleName));
+        String hashed = passwordService.hash(dto.password);
+        User user = UserMapper.toEntity(dto, role, hashed);
         userDao.create(user);
     }
 
-    public Optional<User> getUser(UUID id) {
-        return userDao.findById(id);
+    public Optional<UserResponseDto> getUser(UUID id) {
+        return userDao.findById(id)
+                .map(UserMapper::toDto);
     }
 
-    public List<User> getAllUsers() {
-        return userDao.findAll();
-    }
-
-    public Optional<User> findByUsername(String username) {
-        return userDao.findByUsername(username);
-    }
-
-    public boolean updateUser(UUID id, User updatedUser) {
-        return userDao.findById(id).map(user -> {
-            user.setUsername(updatedUser.getUsername());
-            user.setEmail(updatedUser.getEmail());
-            user.setRole(updatedUser.getRole());
-
-            if (!updatedUser.getPasswordHash().isBlank()) {
-                String newHashedPassword = passwordService.hash(updatedUser.getPasswordHash());
-                user.setPasswordHash(newHashedPassword);
-            }
-
-            userDao.update(user);
-            return true;
-        }).orElse(false);
+    public List<UserResponseDto> getAllUsers() {
+        return userDao.findAll()
+                .stream()
+                .map(UserMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public boolean deleteUser(UUID id) {
@@ -63,4 +55,19 @@ public class UserService {
             return true;
         }).orElse(false);
     }
+
+    public boolean updateUser(UUID id, UserUpdateDto dto) {
+        return userDao.findById(id).map(user -> {
+            Role role = roleService.findByName(dto.roleName)
+                    .orElseThrow(() -> new IllegalArgumentException("Ungültige Rolle: " + dto.roleName));
+            UserMapper.updateEntity(user, dto, role, passwordService);
+            userDao.update(user);
+            return true;
+        }).orElse(false);
+    }
+
+    public Optional<User> findByUsername(String username) {
+        return userDao.findByUsername(username);
+    }
+
 }

@@ -5,6 +5,7 @@ import com.quizamity.model.User;
 import com.quizamity.service.RoleService;
 import com.quizamity.service.UserService;
 import com.quizamity.security.PasswordService;
+import com.quizamity.dao.UserDao;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
@@ -25,6 +26,9 @@ public class UserInitializer {
 
     @Inject
     private PasswordService passwordService;
+
+    @Inject
+    private UserDao userDao;
 
     @PostConstruct
     public void init() {
@@ -58,7 +62,7 @@ public class UserInitializer {
             String hashedPassword = passwordService.hash(plainPassword);
 
             User user = new User(username, hashedPassword, email, role);
-            userService.createUser(user);
+            userDao.create(user);
         }
     }
 }
