@@ -86,11 +86,17 @@
             data-bs-slide-to="3"
             aria-label="Slide 4"
           ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="4"
+            aria-label="Slide 5"
+          ></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="./img/topicChoice.jpg"
+              src="img/topicChoice.jpg"
               class="d-block w-100"
               alt="Themenauswahl"
             />
@@ -139,9 +145,32 @@
               </button>
             </div>
           </div>
+            <div class="carousel-item">
+            <img src="img/lobby.jpg" class="d-block w-100" alt="lobby" />
+            <div class="carousel-caption d-md-block">
+              <h5>Lobby beitreten</h5>
+              <div class="button-wrapper">
+                <button type="button" id="lobby-button1">
+                  Christians Lobby (10 Fragen)
+                </button>
+                <button type="button" id="lobby-button2">
+                  Selinas Lobby (15 Fragen)
+                </button>
+                <button type="button" id="lobby-button3">
+                  Florians Lobby (20 Fragen)
+                </button>
+                <button type="button" id="lobby-button4">
+                  Sams Lobby (25 Fragen)
+                </button>
+                <button type="button" id="lobby">
+                  eigene Lobby gründen
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="carousel-item">
             <img
-              src="./img/questions.jpg"
+              src="img/questions.jpg"
               class="d-block w-100"
               alt="Anzahl Fragen"
             />
@@ -168,27 +197,16 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/lobby.jpg" class="d-block w-100" alt="lobby" />
+            <img src="img/waitingroom.jpg" class="d-block w-100" alt="lobby" />
             <div class="carousel-caption d-md-block">
-              <h5>Lobby beitreten</h5>
+              <h5>Lobby-Warteraum</h5>
               <div class="button-wrapper">
-                <button type="button" id="lobby-button1">
-                  Christians Lobby (10 Fragen)
-                </button>
-                <button type="button" id="lobby-button2">
-                  Selinas Lobby (15 Fragen)
-                </button>
-                <button type="button" id="lobby-button3">
-                  Florians Lobby (20 Fragen)
-                </button>
-                <button type="button" id="lobby-button4">
-                  Sams Lobby (25 Fragen)
-                </button>
+              <p>Mitglieder werden gesucht... </p> <br>
+              <p>bitte warten</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
       <button
         class="carousel-control-prev"
         type="button"
@@ -207,7 +225,9 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
+      </div>
     </main>
+    <small>Bildquelle: Pixabay</small>
     <!--Footer-Bereich-->
     <footer>
       <div class="links">
