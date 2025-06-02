@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="/home/collini/dev/Quizamity/frontend/dist/public/styles" />
+    <copy todir="/home/collini/dev/Quizamity/frontend/dist/public/styles">
+      <fileset includes="*.*" dir="/home/collini/dev/Quizamity/frontend/src/public/styles" />
+    </copy>
+  </target>
+</project>
