@@ -53,10 +53,83 @@
       </div>
     </header>
 
-    <div id="dashboard-root"></div>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="false">
+  <div class="carousel-inner">
 
-  <script type="module" src="/src/jsx/dashboard.jsx"></script>
+    <!-- 1: Themenauswahl -->
+    <div class="carousel-item active">
+      <img src="img/topicChoice.jpg" class="d-block w-100" alt="Themenauswahl" />
+      <div class="carousel-caption d-md-block">
+        <h5>Themenauswahl</h5>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-small" type="button" data-bs-toggle="dropdown">
+            <span id="topicButtonLabel">Wähle aus deinen aktuell aktiven Modulen</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item topic-option" href="#">Organizational Behavior_DLBBWOB01</a></li>
+            <li><a class="dropdown-item topic-option" href="#">Seminar Software Engineering_ISEE01</a></li>
+            <li><a class="dropdown-item topic-option" href="#">Projekt Software Engineering_ISEF01</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-primary mt-3" id="nextTopic" disabled>Weiter</button>
+      </div>
+    </div>
 
+    <!-- 2: Spielmodi -->
+    <div class="carousel-item">
+      <img src="img/gamemode.jpg" class="d-block w-100" alt="Spielmodus" />
+      <div class="carousel-caption d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h5>Spielmodus</h5>
+        <p>Wähle deinen gewünschten Spielmodus</p>
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-outline-light mode-btn">Einzelspieler</button>
+          <button class="btn btn-outline-light mode-btn">Teammodus</button>
+        </div>
+        <button class="btn btn-primary mt-3" id="nextMode" disabled>Weiter</button>
+      </div>
+    </div>
+
+    <!-- 3: Lobby -->
+    <div class="carousel-item">
+      <img src="img/lobby.jpg" class="d-block w-100" alt="Lobby" />
+      <div class="carousel-caption d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h5>Lobby beitreten</h5>
+        <div id="lobbyButtons" class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-secondary">Christians Lobby (10 Fragen)</button>
+          <button class="btn btn-secondary">Selinas Lobby (15 Fragen)</button>
+          <button class="btn btn-secondary">Florians Lobby (20 Fragen)</button>
+          <button class="btn btn-secondary">Sams Lobby (25 Fragen)</button>
+          <button class="btn btn-secondary" id="eigeneLobby">eigene Lobby gründen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Anzahl Fragen -->
+    <div class="carousel-item">
+      <img src="img/questions.jpg" class="d-block w-100" alt="Anzahl Fragen" />
+      <div class="carousel-caption d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h5>Anzahl der Fragen</h5>
+        <p>Wähle die Anzahl oder nutze die Standardeinstellung (20 Fragen)</p>
+        <div class="mb-4">
+          <label for="anzahlFragen" class="form-label">
+            Anzahl Fragen: <span id="anzahlValue">10</span>
+          </label>
+          <input type="range" class="form-range" min="10" max="30" step="2" value="10" id="anzahlFragen" />
+        </div>
+        <button class="btn btn-primary" id="nextFragen">Weiter</button>
+      </div>
+    </div>
+
+    <!-- 5: Warteraum -->
+    <div class="carousel-item">
+      <img src="img/waitingroom.jpg" class="d-block w-100" alt="Warteraum" />
+      <div class="carousel-caption d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h5>Lobby-Warteraum</h5>
+        <p>Mitglieder werden gesucht... bitte warten</p>
+      </div>
+    </div>
+  </div>
+</div>
     <small>Bildquelle: Pixabay</small>
     <!--Footer-Bereich-->
     <footer>
