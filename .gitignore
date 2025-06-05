@@ -33,3 +33,4 @@ dist-ssr
 /.vite/deps_temp_e15c50e7/_metadata.json
 /.vite/deps_temp_44ced742/_metadata.json
 /.vite/deps/_metadata.json
+/target
