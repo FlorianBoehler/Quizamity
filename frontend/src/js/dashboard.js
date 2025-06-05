@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formData = {};
 
   // THEMENAUSWAHL
-    const topicBtnLabel = document.getElementById("topicButtonLabel");
+  const topicBtnLabel = document.getElementById("topicButtonLabel");
   const nextTopic = document.getElementById("nextTopic");
   const dropdownToggle = document.getElementById("btn-small");
 
@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // SPIELMODUS
 const singleBtn = document.getElementById("singleplayer-button");
 const multiBtn = document.getElementById("multiplayer-button");
+const prevMode = document.getElementById("prevMode");
 const nextMode = document.getElementById("nextMode");
+
+ // Button zuerst deaktivieren
+  nextTopic.disabled = true;
 
 singleBtn.addEventListener("click", function () {
   const selectedMode = this.textContent.trim();
@@ -67,15 +71,25 @@ multiBtn.addEventListener("click", function () {
   nextMode.disabled = false;
 });
 
+prevMode.addEventListener("click", () => {
+  carousel.prev();
+});
+
 nextMode.addEventListener("click", () => {
   carousel.next();
 });
 
   // LOBBY
 const lobbyButtons = ["lobby-button1", "lobby-button2", "lobby-button3", "lobby-button4", "lobby"];
+const prevLobby = document.getElementById("prevLobby");
 const nextLobby = document.getElementById("nextLobby");
 
 nextLobby.disabled = true; // Weiter-Button erstmal deaktivieren
+
+prevLobby.addEventListener("click", () => {
+  carousel.prev();
+
+});
 
 lobbyButtons.forEach(id => {
   const btn = document.getElementById(id);
@@ -105,11 +119,14 @@ nextLobby.addEventListener("click", () => {
   } else {
     window.location.href = `${window.location.origin}/public/quiz.html`; // Direkt zur Quiz-Seite
   }
+
+
 });
 
   // ANZAHL FRAGEN
 const range = document.getElementById("anzahlFragen");
 const display = document.getElementById("fragenWert");
+const prevFragenBtn = document.getElementById("prevQuestion");
 const nextFragenBtn = document.getElementById("nextQuestion");
 
 nextFragenBtn.disabled = true; // Weiter-Button erstmal deaktivieren
@@ -127,9 +144,14 @@ range.addEventListener("input", () => {
  // Weiter Button aktivieren
       nextFragenBtn.disabled = false;
 
+prevFragenBtn.addEventListener("click", () => {
+  carousel.prev();
+});
+
 // Beim Klick auf "Weiter" zur Warteraum-Slide springen
 nextFragenBtn.addEventListener("click", () => {
   carousel.next(); // Springt zur nächsten Slide, z. B. Warteraum
 });
 
 });
+
