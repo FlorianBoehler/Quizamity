@@ -156,3 +156,4 @@ nextFragenBtn.addEventListener("click", () => {
 });
 
 });
+
