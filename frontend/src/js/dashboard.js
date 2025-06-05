@@ -1,51 +1,135 @@
-const carousel = bootstrap.Carousel.getOrCreateInstance(document.querySelector('#carouselExample'));
-const formData = {};
+document.addEventListener('DOMContentLoaded', () => {
+  // Carousel initialisieren mit der richtigen ID
+  const carousel = bootstrap.Carousel.getOrCreateInstance(document.querySelector('#carouselExampleCaptions'));
+  const formData = {};
 
-// Themenauswahl
-const topicBtnLabel = document.getElementById("topicButtonLabel");
-const nextTopic = document.getElementById("nextTopic");
-document.querySelectorAll(".topic-option").forEach(item => {
-  item.addEventListener("click", (e) => {
-    e.preventDefault();
-    const topic = e.target.textContent;
-    topicBtnLabel.textContent = topic;
-    formData.topic = topic;
-    nextTopic.disabled = false;
+  // THEMENAUSWAHL
+    const topicBtnLabel = document.getElementById("topicButtonLabel");
+  const nextTopic = document.getElementById("nextTopic");
+  const dropdownToggle = document.getElementById("btn-small");
+
+  // Button zuerst deaktivieren
+  nextTopic.disabled = true;
+
+  // Bootstrap Dropdown Instanz holen oder erstellen
+  const dropdownInstance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+
+  const dropdownItems = document.querySelectorAll(".dropdown-item");
+
+  dropdownItems.forEach(item => {
+    item.addEventListener("click", () => {
+      const selectedTopic = item.textContent.trim();
+      formData.topic = selectedTopic; // Optional: speichern
+
+      // Text im Button aktualisieren
+      topicBtnLabel.textContent = selectedTopic;
+
+      // Weiter Button aktivieren
+      nextTopic.disabled = false;
+
+      // Aktive Klasse setzen
+      dropdownItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+
+      // Dropdown schließen
+      dropdownInstance.hide();
+    });
   });
-});
-nextTopic.addEventListener("click", () => carousel.next());
 
-// Spielmodus
-let selectedMode = '';
-document.querySelectorAll(".mode-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    selectedMode = btn.textContent;
-    formData.mode = selectedMode;
-    document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("btn-light"));
-    btn.classList.add("btn-light");
-    document.getElementById("nextMode").disabled = false;
-  });
-});
-document.getElementById("nextMode").addEventListener("click", () => carousel.next());
-
-// Lobby
-document.getElementById("lobbyButtons").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("btn")) return;
-  const name = e.target.textContent;
-  formData.lobby = name;
-  if (name === "eigene Lobby gründen") {
+  nextTopic.addEventListener("click", () => {
     carousel.next();
-  } else {
-    window.location.href = "/quiz.html";
+  });
+
+  // SPIELMODUS
+const singleBtn = document.getElementById("singleplayer-button");
+const multiBtn = document.getElementById("multiplayer-button");
+const nextMode = document.getElementById("nextMode");
+
+singleBtn.addEventListener("click", function () {
+  const selectedMode = this.textContent.trim();
+  formData.mode = selectedMode;
+
+  this.classList.add("btn-light");
+  multiBtn.classList.remove("btn-light");
+
+  // Direkt weiterleiten, kein Weiter-Button nötig
+  window.location.href = `${window.location.origin}/public/quiz.html`;
+});
+
+multiBtn.addEventListener("click", function () {
+  const selectedMode = this.textContent.trim();
+  formData.mode = selectedMode;
+
+  this.classList.add("btn-light");
+  singleBtn.classList.remove("btn-light");
+
+  // Weiter-Button aktivieren, weil Multi Player noch weitere Schritte hat
+  nextMode.disabled = false;
+});
+
+nextMode.addEventListener("click", () => {
+  carousel.next();
+});
+
+  // LOBBY
+const lobbyButtons = ["lobby-button1", "lobby-button2", "lobby-button3", "lobby-button4", "lobby"];
+const nextLobby = document.getElementById("nextLobby");
+
+nextLobby.disabled = true; // Weiter-Button erstmal deaktivieren
+
+lobbyButtons.forEach(id => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      // Lobby-Name speichern
+      const name = btn.textContent.trim();
+      formData.lobby = name;
+
+      // Weiter Button aktivieren
+      nextLobby.disabled = false;
+
+      // Aktive Klasse für optische Markierung
+      lobbyButtons.forEach(otherId => {
+        const otherBtn = document.getElementById(otherId);
+        if (otherBtn) otherBtn.classList.remove("active");
+      });
+      btn.classList.add("active");
+    });
   }
 });
 
-// Anzahl Fragen
+// Weiter-Button klick: Carousel weiter oder Seite wechseln
+nextLobby.addEventListener("click", () => {
+  if (formData.lobby === "eigene Lobby gründen") {
+    carousel.next(); // Zum nächsten Slide im Carousel
+  } else {
+    window.location.href = `${window.location.origin}/public/quiz.html`; // Direkt zur Quiz-Seite
+  }
+});
+
+  // ANZAHL FRAGEN
 const range = document.getElementById("anzahlFragen");
-const display = document.getElementById("anzahlValue");
+const display = document.getElementById("fragenWert");
+const nextFragenBtn = document.getElementById("nextQuestion");
+
+nextFragenBtn.disabled = true; // Weiter-Button erstmal deaktivieren
+
+// Anfangswert anzeigen und speichern
+formData.anzahlFragen = Number(range.value);
+display.textContent = range.value;
+
+// Event bei Änderung des Sliders
 range.addEventListener("input", () => {
   display.textContent = range.value;
   formData.anzahlFragen = Number(range.value);
 });
-document.getElementById("nextFragen").addEventListener("click", () => carousel.next());
 
+ // Weiter Button aktivieren
+      nextFragenBtn.disabled = false;
+
+// Beim Klick auf "Weiter" zur Warteraum-Slide springen
+nextFragenBtn.addEventListener("click", () => {
+  carousel.next(); // Springt zur nächsten Slide, z. B. Warteraum
+});
+
+});
