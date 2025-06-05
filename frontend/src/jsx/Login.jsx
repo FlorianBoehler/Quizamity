@@ -1,33 +1,45 @@
 import { useState, useEffect } from "react";
+import { getAllUsers } from "./User"; // API-Funktionen importieren
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [redirect, setRedirect] = useState(false); // Zustand für die Weiterleitung
+  const [username, setUsername] = useState("");  // Benutzername im State
+  const [password, setPassword] = useState("");  // Passwort im State
+  const [error, setError] = useState("");  // Fehlernachricht im State
+  const [redirect, setRedirect] = useState(false);  // Weiterleitungszustand
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Überprüfen, ob beide Felder ausgefüllt sind
     if (!username || !password) {
       setError("Benutzername oder Passwort sind erforderlich");
-      return; // Verhindern, dass der Code weiterläuft
+      return;  // Verhindern, dass der Code weiterläuft
     }
 
-    // Überprüfen der Anmeldedaten
-    if (username === "Tobias Brückmann" && password === "quizamity") {
-      setRedirect(true); // Weiterleitung setzen
-    } else {
-      setError("Benutzername oder Passwort falsch, bitte versuche es erneut.");
+    try {
+      // Alle Benutzer abrufen
+      const users = await getAllUsers();
+
+      // Benutzer mit passendem Benutzernamen und Passwort suchen
+      const user = users.find((user) => user.username === username && user.password === password);
+
+      if (user) {
+        setRedirect(true);  // Weiterleitung setzen
+      } else {
+        setError("Benutzername oder Passwort falsch, bitte versuche es erneut.");
+      }
+    } catch (err) {
+      setError("Fehler beim Abrufen der Benutzer, bitte versuche es später erneut.");
+      console.error("Fehler beim Abrufen der Benutzer:", err);
     }
   };
 
   // Weiterleitung nach erfolgreicher Anmeldung
   useEffect(() => {
     if (redirect) {
-      window.location.href = "/dashboard.html"; // Weiterleitung auf das Dashboard
+     window.location.href = `${window.location.origin}/public/dashboard.html`;// Weiterleitung auf das Dashboard
     }
-  }, [redirect]); // Die Weiterleitung wird nur ausgelöst, wenn "redirect" wahr ist
+  }, [redirect]);  // Nur auslösen, wenn "redirect" wahr ist
 
   return (
     <form className="loginform" onSubmit={handleSubmit}>
@@ -39,7 +51,7 @@ function Login() {
           id="inputUsername"
           placeholder="Benutzername"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}  // Aktualisieren des Benutzernamens im State
         />
       </div>
       <div className="form-group">
@@ -50,10 +62,10 @@ function Login() {
           id="inputPassword"
           placeholder="Passwort"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}  // Aktualisieren des Passworts im State
         />
       </div>
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error">{error}</p>}  {/* Fehleranzeige, wenn vorhanden */}
       <div id="loginlinks">
         <ul>
           <li>
@@ -65,11 +77,12 @@ function Login() {
         </ul>
       </div>
       <div className="loginbutton">
-        <button type="submit" class="button" href="dashboard.html">
+        <button type="submit" className="button">
           Login
         </button>
       </div>
     </form>
   );
 }
+
 export default Login;
