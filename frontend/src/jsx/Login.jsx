@@ -25,7 +25,7 @@ function Login() {
   // Weiterleitung nach erfolgreicher Anmeldung
   useEffect(() => {
     if (redirect) {
-     window.location.href = `${window.location.origin}/dashboard.html`;// Weiterleitung auf das Dashboard
+     window.location.href = `${window.location.origin}/public/dashboard.html`;// Weiterleitung auf das Dashboard
     }
   }, [redirect]); // Die Weiterleitung wird nur ausgelöst, wenn "redirect" wahr ist
 
