@@ -155,3 +155,4 @@ nextFragenBtn.addEventListener("click", () => {
 
 });
 
+});
