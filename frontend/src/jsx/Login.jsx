@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllUsers } from "./User"; // API-Funktionen importieren
+import { authenticateUser } from "../js/user"; // API-Funktionen importieren
 
 function Login() {
   const [username, setUsername] = useState("");  // Benutzername im State
@@ -17,20 +17,11 @@ function Login() {
     }
 
     try {
-      // Alle Benutzer abrufen
-      const users = await getAllUsers();
-
-      // Benutzer mit passendem Benutzernamen und Passwort suchen
-      const user = users.find((user) => user.username === username && user.password === password);
-
-      if (user) {
-        setRedirect(true);  // Weiterleitung setzen
-      } else {
-        setError("Benutzername oder Passwort falsch, bitte versuche es erneut.");
-      }
-    } catch (err) {
-      setError("Fehler beim Abrufen der Benutzer, bitte versuche es später erneut.");
-      console.error("Fehler beim Abrufen der Benutzer:", err);
+      const token = await authenticateUser(username, password);
+      localStorage.setItem("token", token);  // Token speichern
+      setRedirect(true);
+    } catch {
+      setError("Benutzername oder Passwort ist falsch, bitte versuche es erneut.");
     }
   };
 
