@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const topicBtnLabel = document.getElementById("topicButtonLabel");
   const nextTopic = document.getElementById("nextTopic");
   const dropdownToggle = document.getElementById("btn-small");
+   const dropdownMenu = document.getElementById("categoryDropdown");
 
   // Button zuerst deaktivieren
   nextTopic.disabled = true;
@@ -14,26 +15,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bootstrap Dropdown Instanz holen oder erstellen
   const dropdownInstance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
 
-  const dropdownItems = document.querySelectorAll(".dropdown-item");
+fetch('http://localhost:9080/quizamity-1.0-SNAPSHOT/api/categories')
+  .then(res => res.json())
+  .then(categories => {
+    dropdownMenu.innerHTML = '';  // leeren
 
-  dropdownItems.forEach(item => {
-    item.addEventListener("click", () => {
-      const selectedTopic = item.textContent.trim();
-      formData.topic = selectedTopic; // Optional: speichern
+categories.forEach(cat => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.className = 'dropdown-item';
+      btn.textContent = cat.name;
 
-      // Text im Button aktualisieren
-      topicBtnLabel.textContent = selectedTopic;
+      btn.addEventListener('click', () => {
+        topicBtnLabel.textContent = cat.name;
+        nextTopic.disabled = false;
+        localStorage.setItem("selectedTopic", cat.name); //speichern
 
-      // Weiter Button aktivieren
-      nextTopic.disabled = false;
+        // aktive Klasse setzen
+        dropdownMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+        btn.classList.add('active');
 
-      // Aktive Klasse setzen
-      dropdownItems.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
+        dropdownInstance.hide();
+      });
 
-      // Dropdown schließen
-      dropdownInstance.hide();
+      li.appendChild(btn);
+      dropdownMenu.appendChild(li);
     });
+  })
+  .catch(() => {
+    dropdownMenu.innerHTML = '<li><span class="dropdown-item text-danger">Kategorien konnten nicht geladen werden</span></li>';
   });
 
   nextTopic.addEventListener("click", () => {
@@ -47,7 +57,7 @@ const prevMode = document.getElementById("prevMode");
 const nextMode = document.getElementById("nextMode");
 
  // Button zuerst deaktivieren
-  nextTopic.disabled = true;
+  nextMode.disabled = true;
 
 singleBtn.addEventListener("click", function () {
   const selectedMode = this.textContent.trim();
@@ -86,6 +96,14 @@ const nextLobby = document.getElementById("nextLobby");
 
 nextLobby.disabled = true; // Weiter-Button erstmal deaktivieren
 
+// Statische Lobbys mit Fragenanzahl
+  const lobbys = [
+    { name: "Christians Lobby", questionsCount: 10 },
+    { name: "Selinas Lobby", questionsCount: 15 },
+    { name: "Florians Lobby", questionsCount: 20 },
+    { name: "Sams Lobby", questionsCount: 25 },
+  ];
+
 prevLobby.addEventListener("click", () => {
   carousel.prev();
 
@@ -95,14 +113,23 @@ lobbyButtons.forEach(id => {
   const btn = document.getElementById(id);
   if (btn) {
     btn.addEventListener("click", () => {
-      // Lobby-Name speichern
-      const name = btn.textContent.trim();
+      let name = btn.textContent.trim();
+      const index = name.indexOf(" (");
+      if (index > -1) {
+        name = name.substring(0, index);
+      }
+      console.log("Geklickter Lobby-Name:", name);
+
       formData.lobby = name;
 
-      // Weiter Button aktivieren
+      const lobby = lobbys.find(l => l.name.toLowerCase().trim() === name.toLowerCase().trim());
+      console.log("Gefundene Lobby:", lobby);
+
+      formData.anzahlFragen = lobby ? lobby.questionsCount : 0;
+      console.log("Anzahl Fragen gesetzt auf:", formData.anzahlFragen);
+
       nextLobby.disabled = false;
 
-      // Aktive Klasse für optische Markierung
       lobbyButtons.forEach(otherId => {
         const otherBtn = document.getElementById(otherId);
         if (otherBtn) otherBtn.classList.remove("active");
@@ -112,15 +139,14 @@ lobbyButtons.forEach(id => {
   }
 });
 
-// Weiter-Button klick: Carousel weiter oder Seite wechseln
 nextLobby.addEventListener("click", () => {
   if (formData.lobby === "eigene Lobby gründen") {
-    carousel.next(); // Zum nächsten Slide im Carousel
+    carousel.next();
   } else {
-    window.location.href = `${window.location.origin}/public/quiz.html`; // Direkt zur Quiz-Seite
+    localStorage.setItem("selectedLobby", formData.lobby);
+    localStorage.setItem("selectedQuestionsCount", formData.anzahlFragen);
+    window.location.href = `${window.location.origin}/public/quiz.html`;
   }
-
-
 });
 
   // ANZAHL FRAGEN
