@@ -1,3 +1,4 @@
+/home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/api/AuthenticateResource.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dto/UserResponseDto.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dao/GameSessionDao.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dto/GameUpdateDto.java
@@ -17,6 +18,7 @@
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/model/User.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/api/GameSessionResource.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dto/AnswerUpdateDto.java
+/home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/service/AuthenticateService.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dao/CategoryDao.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/dto/GameParticipantCreateDto.java
 /home/florian/dev/Java/Java_Sam/quizamity/src/main/java/com/quizamity/model/Role.java

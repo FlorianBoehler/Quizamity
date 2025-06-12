@@ -12,6 +12,7 @@ com/quizamity/model/User.class
 com/quizamity/mapper/GameSessionMapper.class
 com/quizamity/dto/QuestionCreateDto.class
 com/quizamity/dto/GameResponseDto.class
+com/quizamity/service/AuthenticateService.class
 com/quizamity/model/Category.class
 com/quizamity/dao/GameDao.class
 com/quizamity/model/GameParticipant.class
@@ -31,6 +32,7 @@ com/quizamity/dto/GameSessionCreateDto.class
 com/quizamity/dto/GameSessionUpdateDto.class
 com/quizamity/init/QuestionInitializer.class
 com/quizamity/mapper/AnswerMapper.class
+com/quizamity/api/AuthenticateResource.class
 com/quizamity/api/CORSFilter.class
 com/quizamity/dto/GameUpdateDto.class
 com/quizamity/service/QuestionService.class
