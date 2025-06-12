@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Carousel initialisieren mit der richtigen ID
-  const carousel = bootstrap.Carousel.getOrCreateInstance(document.querySelector('#carouselExampleCaptions'));
+  const carouselElement = document.querySelector('#carouselExampleCaptions');
+    // Bootstrap Carousel-Instanz erstellen oder holen
+  const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement);
   const formData = {};
 
   // THEMENAUSWAHL
@@ -140,7 +142,7 @@ lobbyButtons.forEach(id => {
 });
 
 nextLobby.addEventListener("click", () => {
-  if (formData.lobby === "eigene Lobby gründen") {
+  if (formData.lobby === "Eigene Lobby gründen") {
     carousel.next();
   } else {
     localStorage.setItem("selectedLobby", formData.lobby);
@@ -179,5 +181,27 @@ nextFragenBtn.addEventListener("click", () => {
   carousel.next(); // Springt zur nächsten Slide, z. B. Warteraum
 });
 
-});
+// WARTERAUM-Buttons nach 5 Sekunden einblenden
+const lobbyButtonsContainer = document.getElementById('lobbyButtonsContainer');
+const waitingText = document.getElementById('waiting-text');
+let timer;
 
+carouselElement.addEventListener('slid.bs.carousel', () => {
+  clearTimeout(timer);
+
+  const activeSlide = carouselElement.querySelector('.carousel-item.active');
+
+  if (activeSlide && activeSlide.id === 'waiting-room-slide') {
+    lobbyButtonsContainer.classList.add('d-none');
+    waitingText.textContent = 'Mitglieder werden gesucht... bitte warten';
+
+    timer = setTimeout(() => {
+      lobbyButtonsContainer.classList.remove('d-none');
+      waitingText.textContent = 'Lobby gefunden';
+    }, 5000);
+
+  } else {
+    lobbyButtonsContainer.classList.add('d-none');
+  }
+});
+});

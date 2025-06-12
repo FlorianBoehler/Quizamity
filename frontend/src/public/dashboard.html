@@ -97,7 +97,7 @@
         <div class="carousel-item">
             <img src="img/lobby.jpg" class="d-block w-100" alt="lobby" />
             <div class="carousel-caption d-md-block">
-              <h5>Lobby-Warteraum</h5>
+              <h5>Verfügbare Lobbys</h5>
               <div class="button-wrapper">
                 <button type="button" id="lobby-button1">
                   Christians Lobby (10 Fragen)
@@ -112,7 +112,7 @@
                   Sams Lobby (25 Fragen)
                 </button>
                 <button type="button" id="lobby">
-                  eigene Lobby gründen
+                  Eigene Lobby gründen
                 </button>
               </div>
                 <div class="d-flex justify-content-between mt-3">
@@ -127,12 +127,12 @@
           <img src="img/questions.jpg" class="d-block w-100" alt="Anzahl Fragen" />
           <div class="carousel-caption d-md-block">
             <h5>Anzahl der Fragen</h5>
-            <p>Wähle die Anzahl oder nutze die Standardeinstellung (20 Fragen)</p>
+            <p>Wähle die Anzahl oder nutze die Standardeinstellung (10 Fragen)</p>
             <div class="mb-4">
               <label for="anzahlFragen" class="form-label">
                 Anzahl Fragen: <span id="fragenWert">10</span>
               </label>
-              <input type="range" class="form-range" min="10" max="30" step="2" value="10" id="anzahlFragen" />
+              <input type="range" class="form-range" min="10" max="30" step="5" value="10" id="anzahlFragen" />
             </div>
               <div class="d-flex justify-content-between mt-3">
              <button class="btn btn-secondary" id="prevQuestion">Zurück</button>
@@ -142,13 +142,20 @@
         </div>
 
         <!-- Warteraum -->
-        <div class="carousel-item">
-          <img src="img/waitingroom.jpg" class="d-block w-100" alt="Warteraum" />
-          <div class="carousel-caption d-md-block">
-            <h5>Lobby-Warteraum</h5>
-            <p>Mitglieder werden gesucht... bitte warten</p>
-          </div>
-        </div>
+        <div class="carousel-item" id="waiting-room-slide"> <!-- klare ID zuordnen, um 5 Sekunden Timer zu starten-->
+  <img src="img/waitingroom.jpg" class="d-block w-100" alt="Warteraum" />
+  <div class="carousel-caption d-md-block">
+    <h5>Lobby-Warteraum</h5>
+    <p id="waiting-text">Mitglieder werden gesucht... bitte warten</p>
+
+    <!-- BUTTONS (anfangs versteckt) -->
+    <div id="lobbyButtonsContainer" class="d-none">
+      <div class="button-wrapper mt-3">
+        <button type="button" class="btn btn-primary" id="lobby-button5">Christians Lobby</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       </div>
     </div>
