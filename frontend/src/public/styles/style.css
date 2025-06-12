@@ -1,8 +1,7 @@
 /***Allgemeine Formatierungen***/
 body {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
+ }
 
 header {
   background-color: rgb(208, 255, 199);
@@ -65,7 +64,8 @@ main {
 }
 
 h1 {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 200 !important;
   font-size: 3rem !important;
   text-align: center; /* Zentriert Text innerhalb Elements */
 }
@@ -179,6 +179,13 @@ label {
 }
 
 /***Carousel dashboard.html***/
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%;
+  position: absolute;
+  z-index: 1;
+}
+
 #singleplayer-button,
 #multiplayer-button,
 #lobby-button1,
@@ -190,6 +197,15 @@ label {
   border: none;
   border-radius: 2rem;
   padding: 1rem 2rem;
+}
+
+#lobby{
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.25rem 2rem;
+  margin-top: 1rem;
 }
 
 #singleplayer-button {
@@ -211,6 +227,11 @@ label {
 }
 #lobby-button4 {
   background-color: lightblue;
+}
+
+#lobby{
+  background-color: red;
+  align-items: flex-end;
 }
 
 .button-wrapper {
@@ -276,7 +297,7 @@ label {
 @media (min-width: 992px) {
   #carouselExampleCaptions {
     max-width: 80rem;
-    margin: 1rem auto;
+    margin: 0 auto;
   }
 }
 
@@ -302,7 +323,14 @@ label {
   #lobby-button4 {
     font-size: 0.85rem;
     border-radius: 1rem;
-    padding: 0.85rem 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #lobby{
+    font-size: 0.85rem;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+
   }
 
   .carousel-caption {
@@ -317,7 +345,7 @@ label {
   }
 
   .carousel-item img {
-    height: 18rem;
+    height: 22rem;
     object-fit: cover;
   }
 
@@ -325,7 +353,9 @@ label {
     padding: 1.5rem;
     margin: 1rem 0;
   }
+
 }
+
 
 /*Handy Header und Footer*/
 @media (max-width: 480px) {
