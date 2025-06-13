@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const quizForm = document.getElementById("quizForm");
   const selectedCategory = localStorage.getItem("selectedTopic");
+  const mode = localStorage.getItem("selectedMode" || "Singleplayer").toLowerCase(); // Modus aus localStorage lesen, Default Singleplayer
+
   if (!selectedCategory) {
     quizForm.innerHTML = "<p>Keine Kategorie gewählt.</p>";
     return;
@@ -53,9 +55,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (index < questions.length) {
           renderQuestion(questions[index]);
         } else {
+          let gegnerScoreText = "";
+          if (mode !== "singleplayer") {
+            const gegnerScore = Math.floor(Math.random() * (questions.length + 1));
+            gegnerScoreText = `<p>Dein Mitspieler hat <strong>${gegnerScore}</strong> von <strong>${questions.length}</strong> richtig.</p>`;
+          }
+
           quizForm.innerHTML = `
             <h2>Quiz beendet!</h2>
             <p>Du hast <strong>${score}</strong> von <strong>${questions.length}</strong> richtig.</p>
+            ${gegnerScoreText}
           `;
         }
       };

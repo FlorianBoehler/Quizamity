@@ -65,6 +65,9 @@ singleBtn.addEventListener("click", function () {
   const selectedMode = this.textContent.trim();
   formData.mode = selectedMode;
 
+    // Modus in localStorage speichern
+  localStorage.setItem("selectedMode", selectedMode);
+
   this.classList.add("btn-light");
   multiBtn.classList.remove("btn-light");
 
@@ -75,6 +78,9 @@ singleBtn.addEventListener("click", function () {
 multiBtn.addEventListener("click", function () {
   const selectedMode = this.textContent.trim();
   formData.mode = selectedMode;
+
+    // Modus in localStorage speichern
+  localStorage.setItem("selectedMode", selectedMode);
 
   this.classList.add("btn-light");
   singleBtn.classList.remove("btn-light");
@@ -197,7 +203,26 @@ carouselElement.addEventListener('slid.bs.carousel', () => {
 
     timer = setTimeout(() => {
       lobbyButtonsContainer.classList.remove('d-none');
-      waitingText.textContent = 'Lobby gefunden';
+      waitingText.textContent ='Mitglied gefunden';
+    
+      const lobbyBtn5 = document.getElementById("lobby-button5");
+      if (lobbyBtn5) {
+        // Event Listener einmalig setzen
+        lobbyBtn5.onclick = () => {
+          const selectedTopic = localStorage.getItem("selectedTopic") || "";
+          const fragenWert = document.getElementById("anzahlFragen").value || "10";
+
+          localStorage.setItem("selectedLobby", "Mitspieler Christian ist deiner Lobby beigetreten");
+          localStorage.setItem("selectedTopic", selectedTopic);
+          localStorage.setItem("selectedQuestionsCount", fragenWert);
+
+          // Optional Button deaktivieren, um Mehrfachklick zu verhindern
+          lobbyBtn5.disabled = true;
+
+          window.location.href = `${window.location.origin}/public/quiz.html`;
+        };
+      }
+
     }, 5000);
 
   } else {
