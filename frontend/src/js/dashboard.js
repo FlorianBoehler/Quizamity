@@ -62,7 +62,7 @@ const nextMode = document.getElementById("nextMode");
   nextMode.disabled = true;
 
 singleBtn.addEventListener("click", function () {
-  const selectedMode = this.textContent.trim();
+  const selectedMode = "Singleplayer";
   formData.mode = selectedMode;
 
     // Modus in localStorage speichern
@@ -76,7 +76,7 @@ singleBtn.addEventListener("click", function () {
 });
 
 multiBtn.addEventListener("click", function () {
-  const selectedMode = this.textContent.trim();
+  const selectedMode = "Multiplayer";
   formData.mode = selectedMode;
 
     // Modus in localStorage speichern
@@ -212,7 +212,7 @@ carouselElement.addEventListener('slid.bs.carousel', () => {
           const selectedTopic = localStorage.getItem("selectedTopic") || "";
           const fragenWert = document.getElementById("anzahlFragen").value || "10";
 
-          localStorage.setItem("selectedLobby", "Mitspieler Christian ist deiner Lobby beigetreten");
+          localStorage.setItem("selectedLobby", "Christian ist beigetreten - Quiz starten");
           localStorage.setItem("selectedTopic", selectedTopic);
           localStorage.setItem("selectedQuestionsCount", fragenWert);
 
