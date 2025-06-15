@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="/home/florian/dev/Java/Java_Sam/quizamity/frontend/dist/public/styles" />
+    <copy todir="/home/florian/dev/Java/Java_Sam/quizamity/frontend/dist/public/styles">
+      <fileset includes="*.*" dir="/home/florian/dev/Java/Java_Sam/quizamity/frontend/src/public/styles" />
+    </copy>
+  </target>
+</project>
