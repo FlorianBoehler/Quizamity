@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const quizForm = document.getElementById("quizForm");
   const selectedCategory = localStorage.getItem("selectedTopic");
+  const mode = (localStorage.getItem("selectedMode" ) || "Singleplayer").toLowerCase(); // Modus aus localStorage lesen, Default Singleplayer
+
   if (!selectedCategory) {
     quizForm.innerHTML = "<p>Keine Kategorie gewählt.</p>";
     return;
@@ -9,7 +11,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("http://localhost:9080/quizamity-1.0-SNAPSHOT/api/questions");
     const allQuestions = await res.json();
-    const questions = allQuestions.filter(q => q.categoryName === selectedCategory);
+   const selectedCount = parseInt(localStorage.getItem("selectedQuestionsCount"), 10);
+const questions = allQuestions
+  .filter(q => q.categoryName === selectedCategory)
+  .slice(0, selectedCount || allQuestions.length);
 
     if (questions.length === 0) {
       quizForm.innerHTML = "<p>Keine Fragen gefunden.</p>";
@@ -53,9 +58,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (index < questions.length) {
           renderQuestion(questions[index]);
         } else {
+          let gegnerScoreText = "";
+          if (mode !== "singleplayer") {
+            const gegnerScore = Math.floor(Math.random() * (questions.length + 1));
+            gegnerScoreText = `<p>Dein Gegner hat <strong>${gegnerScore}</strong> von <strong>${questions.length}</strong> richtig.</p>`;
+          }
+
           quizForm.innerHTML = `
             <h2>Quiz beendet!</h2>
             <p>Du hast <strong>${score}</strong> von <strong>${questions.length}</strong> richtig.</p>
+            ${gegnerScoreText}
           `;
         }
       };

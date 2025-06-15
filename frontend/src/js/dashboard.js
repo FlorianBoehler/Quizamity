@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Carousel initialisieren mit der richtigen ID
-  const carousel = bootstrap.Carousel.getOrCreateInstance(document.querySelector('#carouselExampleCaptions'));
+  const carouselElement = document.querySelector('#carouselExampleCaptions');
+    // Bootstrap Carousel-Instanz erstellen oder holen
+  const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement);
   const formData = {};
 
   // THEMENAUSWAHL
@@ -60,8 +62,11 @@ const nextMode = document.getElementById("nextMode");
   nextMode.disabled = true;
 
 singleBtn.addEventListener("click", function () {
-  const selectedMode = this.textContent.trim();
+  const selectedMode = "Singleplayer";
   formData.mode = selectedMode;
+
+    // Modus in localStorage speichern
+  localStorage.setItem("selectedMode", selectedMode);
 
   this.classList.add("btn-light");
   multiBtn.classList.remove("btn-light");
@@ -71,8 +76,11 @@ singleBtn.addEventListener("click", function () {
 });
 
 multiBtn.addEventListener("click", function () {
-  const selectedMode = this.textContent.trim();
+  const selectedMode = "Multiplayer";
   formData.mode = selectedMode;
+
+    // Modus in localStorage speichern
+  localStorage.setItem("selectedMode", selectedMode);
 
   this.classList.add("btn-light");
   singleBtn.classList.remove("btn-light");
@@ -140,7 +148,7 @@ lobbyButtons.forEach(id => {
 });
 
 nextLobby.addEventListener("click", () => {
-  if (formData.lobby === "eigene Lobby gründen") {
+  if (formData.lobby === "Eigene Lobby gründen") {
     carousel.next();
   } else {
     localStorage.setItem("selectedLobby", formData.lobby);
@@ -179,5 +187,46 @@ nextFragenBtn.addEventListener("click", () => {
   carousel.next(); // Springt zur nächsten Slide, z. B. Warteraum
 });
 
-});
+// WARTERAUM-Buttons nach 5 Sekunden einblenden
+const lobbyButtonsContainer = document.getElementById('lobbyButtonsContainer');
+const waitingText = document.getElementById('waiting-text');
+let timer;
 
+carouselElement.addEventListener('slid.bs.carousel', () => {
+  clearTimeout(timer);
+
+  const activeSlide = carouselElement.querySelector('.carousel-item.active');
+
+  if (activeSlide && activeSlide.id === 'waiting-room-slide') {
+    lobbyButtonsContainer.classList.add('d-none');
+    waitingText.textContent = 'Mitglieder werden gesucht... bitte warten';
+
+    timer = setTimeout(() => {
+      lobbyButtonsContainer.classList.remove('d-none');
+      waitingText.textContent ='Mitglied gefunden';
+    
+      const lobbyBtn5 = document.getElementById("lobby-button5");
+      if (lobbyBtn5) {
+        // Event Listener einmalig setzen
+        lobbyBtn5.onclick = () => {
+          const selectedTopic = localStorage.getItem("selectedTopic") || "";
+          const fragenWert = document.getElementById("anzahlFragen").value || "10";
+
+          localStorage.setItem("selectedLobby", "Christian ist beigetreten - Quiz starten");
+          localStorage.setItem("selectedTopic", selectedTopic);
+          localStorage.setItem("selectedQuestionsCount", fragenWert);
+
+          // Optional Button deaktivieren, um Mehrfachklick zu verhindern
+          lobbyBtn5.disabled = true;
+
+          window.location.href = `${window.location.origin}/public/quiz.html`;
+        };
+      }
+
+    }, 5000);
+
+  } else {
+    lobbyButtonsContainer.classList.add('d-none');
+  }
+});
+});
