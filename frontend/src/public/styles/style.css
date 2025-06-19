@@ -1,7 +1,7 @@
 /***Allgemeine Formatierungen***/
 body {
   box-sizing: border-box;
- }
+}
 
 header {
   background-color: rgb(208, 255, 199);
@@ -64,7 +64,7 @@ main {
 }
 
 h1 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 200 !important;
   font-size: 3rem !important;
   text-align: center; /* Zentriert Text innerhalb Elements */
@@ -200,7 +200,7 @@ label {
   padding: 1rem 2rem;
 }
 
-#lobby{
+#lobby {
   text-align: center;
   color: white;
   border: none;
@@ -231,7 +231,7 @@ label {
   background-color: lightblue;
 }
 
-#lobby{
+#lobby {
   background-color: red;
   align-items: flex-end;
 }
@@ -329,11 +329,10 @@ label {
     padding: 0.5rem 1rem;
   }
 
-  #lobby{
+  #lobby {
     font-size: 0.85rem;
     border-radius: 1rem;
     padding: 0.25rem 1rem;
-
   }
 
   .carousel-caption {
@@ -357,8 +356,12 @@ label {
     margin: 1rem 0;
   }
 
+  #result {
+    width: 10rem;
+    height: auto;
+    object-fit: cover;
+  }
 }
-
 
 /*Handy Header und Footer*/
 @media (max-width: 480px) {
