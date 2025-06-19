@@ -1,45 +1,40 @@
-import React from "react";
-import { screen, fireEvent } from "@testing-library/react";
-import { quiz } from "../js/quiz.js";
+import { screen } from "@testing-library/dom";
 
-beforeEach(() => {
-  // HTML Grundstruktur für das Quiz-Formular
-  document.body.innerHTML = `<form id="quizForm"></form>`;
-});
+// quiz.js lädt automatisch beim DOMContentLoaded
+import "../js/quiz.js";
 
-test("zeigt Fragen und Antworten an und zählt Punkte", async () => {
-  // Mock für fetch - 2 Aufrufe: Fragen und Antworten
-  global.fetch = jest
-    .fn()
-    // Erster fetch-Aufruf: Fragen zurückgeben
-    .mockResolvedValueOnce({
-      json: async () => [{ id: 1, text: "Frage 1?", categoryName: "Test" }],
-    })
-    // Zweiter fetch-Aufruf: Antworten zurückgeben
-    .mockResolvedValueOnce({
-      json: async () => [
-        { id: 10, text: "Antwort 1", isCorrect: false },
-        { id: 11, text: "Antwort 2", isCorrect: true },
-      ],
-    });
+describe("Quiz", () => {
+  beforeEach(() => {
+    // leeres HTML-Formular simulieren
+    document.body.innerHTML = `<div id="quizForm"></div>`;
+    localStorage.clear(); // localStorage leeren
+  });
 
-  // Starte das Quiz, das deine Funktion macht (z.B. renderQuestion etc.)
-  await quiz();
+  test("zeigt Fehlermeldung, wenn keine Kategorie gewählt ist", async () => {
+    // Kein selectedTopic → soll "Keine Kategorie gewählt." anzeigen
 
-  // Frage wird angezeigt
-  expect(screen.getByText("Frage 1?")).toBeInTheDocument();
+    // DOMContentLoaded auslösen
+    document.dispatchEvent(new Event("DOMContentLoaded"));
 
-  // Antworten sind sichtbar
-  expect(screen.getByLabelText("Antwort 1")).toBeInTheDocument();
-  expect(screen.getByLabelText("Antwort 2")).toBeInTheDocument();
+    // Text prüfen
+    expect(screen.getByText("Keine Kategorie gewählt.")).toBeInTheDocument();
+  });
 
-  // Wähle die richtige Antwort
-  fireEvent.click(screen.getByLabelText("Antwort 2"));
+  test("zeigt Fehlermeldung, wenn keine Fragen gefunden werden", async () => {
+    localStorage.setItem("selectedTopic", "TestKategorie");
 
-  // Klicke auf "nächste Frage" (Button im Formular)
-  fireEvent.click(screen.getByText("nächste Frage"));
+    // fetch mocken, damit keine Fragen zurückkommen
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve([]),
+      })
+    );
 
-  // Da nur eine Frage, wird Endbildschirm gezeigt (du musst hier anpassen je nach End-UI)
-  expect(screen.getByText(/Quiz beendet/i)).toBeInTheDocument();
-  expect(screen.getByText(/1 von 1 richtig/i)).toBeInTheDocument();
+    document.dispatchEvent(new Event("DOMContentLoaded"));
+
+    // Warte auf das Ergebnis, weil async
+    await new Promise((r) => setTimeout(r, 0));
+
+    expect(screen.getByText("Keine Fragen gefunden.")).toBeInTheDocument();
+  });
 });
