@@ -8,17 +8,16 @@
         <feature>restfulWS-3.1</feature>
         <feature>servlet-6.0</feature>
         <feature>mpOpenAPI-4.0</feature>
-        <feature>cors</feature>
     </featureManager>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
-    <cors enabled="true">
-        <origin allow="http://localhost:8080" />
-        <methods>GET, POST, PUT, DELETE, OPTIONS</methods>
-        <headers allow="origin, content-type, accept, authorization" expose="*" />
-        <credentials allow="true"/>
-    </cors>
+    <cors domain="/*"
+          allowedOrigins="http://localhost:8080"
+          allowedMethods="GET,POST,PUT,DELETE,OPTIONS"
+          allowedHeaders="origin,content-type,accept,authorization"
+          allowCredentials="true"
+          exposeHeaders="*"/>
 
     <quickStartSecurity userName="duke" userPassword="dukeduke"/>
 
