@@ -18,13 +18,21 @@ public class AuthenticateService {
     private UserService userService;
 
     public String authenticate(String username, String password) {
-        Optional<User> user = userService.findByUsername(username);
-        String jwtToken = null;
-        if (passwordService.verify(password, userService.findByUsername(username).get().getPasswordHash())) {
+        Optional<User> userOptional = userService.findByUsername(username);
 
-            jwtToken = passwordService.createJWT("qizamity", user.get().getUsername(), user.get().getRole().getName(), 50000);
+        // Check if user exists
+        if (userOptional.isEmpty()) {
+            return null; // User not found
         }
-        return jwtToken;
-    }
 
+        User user = userOptional.get();
+
+        // Verify password
+        if (passwordService.verify(password, user.getPasswordHash())) {
+            // Create and return JWT token
+            return passwordService.createJWT("quizamity", user.getUsername(), user.getRole().getName(), 50000);
+        }
+
+        return null; // Invalid password
+    }
 }
