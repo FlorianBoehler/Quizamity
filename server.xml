@@ -13,11 +13,12 @@
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
-    <cors domain="/quizamity-1.0-SNAPSHOT"
-        allowedOrigins="http://localhost:8080"
-        allowedMethods="GET, POST, PUT, DELETE, OPTIONS"
-        allowedHeaders="origin, content-type, accept, authorization"
-        allowCredentials="true"/> <httpEndpoint httpPort="9080" httpsPort="9443"/>
+    <cors enabled="true">
+        <origin allow="http://localhost:8080" />
+        <methods>GET, POST, PUT, DELETE, OPTIONS</methods>
+        <headers allow="origin, content-type, accept, authorization" expose="*" />
+        <credentials allow="true"/>
+    </cors>
 
     <quickStartSecurity userName="duke" userPassword="dukeduke"/>
 
