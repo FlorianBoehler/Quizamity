@@ -12,13 +12,6 @@
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
-    <cors domain="/*"
-          allowedOrigins="http://localhost:8080"
-          allowedMethods="GET,POST,PUT,DELETE,OPTIONS"
-          allowedHeaders="origin,content-type,accept,authorization"
-          allowCredentials="true"
-          exposeHeaders="*"/>
-
     <quickStartSecurity userName="duke" userPassword="dukeduke"/>
 
     <!-- PostgreSQL Datenquelle -->
