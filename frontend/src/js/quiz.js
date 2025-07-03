@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(
-      "http://localhost:9080/quizamity-1.0-SNAPSHOT/api/questions"
+      "http://13.49.34.77:9080/quizamity-1.0-SNAPSHOT/api/questions"
     );
     const allQuestions = await res.json();
     const selectedCount =
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function renderQuestion(question) {
       const aRes = await fetch(
-        `http://localhost:9080/quizamity-1.0-SNAPSHOT/api/answers/question/${question.id}`
+        `http://13.49.34.77:9080/quizamity-1.0-SNAPSHOT/api/answers/question/${question.id}`
       );
       const answers = await aRes.json();
 

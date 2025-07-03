@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownInstance =
     bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
 
-  fetch("http://localhost:9080/quizamity-1.0-SNAPSHOT/api/categories")
+  fetch("http://13.49.34.77:9080/quizamity-1.0-SNAPSHOT/api/categories")
     .then((res) => res.json())
     .then((categories) => {
       dropdownMenu.innerHTML = ""; // leeren
