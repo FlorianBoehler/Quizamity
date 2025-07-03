@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_AUTH_URL = 'http://localhost:9080/quizamity-1.0-SNAPSHOT/api/authenticate';
+const API_AUTH_URL = 'http://13.49.34.77:9080/quizamity-1.0-SNAPSHOT/api/authenticate';
 
 export const authenticateUser = async (username, password) => {
   try {
