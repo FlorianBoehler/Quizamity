@@ -20,6 +20,8 @@ public class CORSFilter implements ContainerRequestFilter, ContainerResponseFilt
     static {
         ALLOWED_ORIGINS.add("http://localhost:8080");
         ALLOWED_ORIGINS.add("http://13.49.34.77:8080");
+        ALLOWED_ORIGINS.add("http://quizamity.de");
+        ALLOWED_ORIGINS.add("http://www.quizamity.de");
     }
 
     @Override
