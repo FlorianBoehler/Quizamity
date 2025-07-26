@@ -4,12 +4,14 @@ services:
     build: frontend/
     ports:
       - "8080:80"
+    restart: always
 
   quizamity-server-application:
     build: .
     ports:
       - "9080:9080"
       - "9443:9443"
+    restart: always
     depends_on:
       - quizamity-db
     environment:
@@ -23,6 +25,7 @@ services:
     image: postgres:15
     ports:
       - "5432:5432"
+    restart: always
     environment:
       POSTGRES_DB: quizamity
       POSTGRES_USER: quizuser
